@@ -3,7 +3,7 @@
 ### EXPERIMENTAL
 
 Fork me!  This repo will allow you to create custom menus within netboot.xyz.
-It works by using your github user name that you input and chaining to this url:
+It works by using your github user name that you input and chains to this url:
 
     https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe
 
