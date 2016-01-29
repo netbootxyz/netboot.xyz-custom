@@ -3,5 +3,11 @@
 ### netboot.xyz-custom menu
 ###
 
+:start
 echo Hello world!
 sleep 10
+goto custom_exit
+
+:custom_exit
+chain menu.ipxe
+exit
