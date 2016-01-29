@@ -2,3 +2,6 @@
 ###
 ### netboot.xyz-custom menu
 ###
+
+echo Hello world!
+sleep 10
