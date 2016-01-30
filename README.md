@@ -12,6 +12,5 @@ set the github_user name early on so that you're github user name is set ahead o
 will automatically display your custom submenu on boot.  You can also set your github_user
 from the Utility menu which will cause a custom menu to appear in the main menu.
 
-echo See antonym/netboot.xyz-custom/README.md for more info.
 If you are new to iPXE scripting, take a look at custom.ipxe.example and build up from that.
 
