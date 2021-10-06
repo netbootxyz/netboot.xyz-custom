@@ -16,9 +16,14 @@ goto boot
 :boot
 LABEL Garuda
 MENU LABEL Garuda
-LINUX http://boot.netboot.xyz/memdisk
-INITRD http://mirrors.fossho.st/garuda/iso/garuda/bspwm/${version}/garuda-bspwm-linux-zen-${version}.iso
+LINUX 
+INITRD 
 APPEND iso
+goto garuda_exit
+
+echo Boot Commencing
+initrd http://mirrors.fossho.st/garuda/iso/garuda/bspwm/${version}/garuda-bspwm-linux-zen-${version}.iso
+chain http://boot.netboot.xyz/memdisk iso raw || goto garuda_exit
 goto garuda_exit
 
 :garuda_exit
