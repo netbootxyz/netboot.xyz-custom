@@ -5,14 +5,13 @@
 
 set os Garuda
 menu ${os}
-item --gap Official Releases
-item Garuda ${space} ${os} Linux
+item Garuda_versions ${space} ${os} Linux
 choose version || goto garuda_exit
 
-:Garuda
-echo Loading...
+:Garuda_versions
+echo 
 chain https://raw.githubusercontent.com/martinkeat/netboot.xyz-custom/master/Garuda.ipxe || goto custom
 
-:gardua_exit
-chain utils.ipxe
-exit
+:garuda_exit
+clear menu
+exit 0
