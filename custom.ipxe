@@ -3,15 +3,8 @@
 ### https://garudalinux.org/
 ### Menu by Martin J Keatings
 
-set os Garuda
-
-:live_menu
-menu ${os}
-item garduda ${space} ${os} Linux
-choose edition || goto live_exit
-goto ${edition}
-
 :edition
+set os Garuda
 menu ${os} Editions
 item --gap ${os} Editions
 item --gap
@@ -141,7 +134,7 @@ item --gap (You are on your own, Garuda dont provide any
 item --gap support for Barebones editions!)   
 item --gap
 item kde-barebones ${space} Install ${os} Linux Barebones
-choose installation || goto live_menu
+choose installation || goto edition
 set version_echo ${installation}
 goto ${installation}
 
@@ -335,7 +328,7 @@ goto boot
 :boot
 echo Stand-by - Now downloading ${os} ${version_echo}
 initrd ${iso_link}
-chain http://boot.netboot.xyz/memdisk iso raw || goto live_menu
+chain http://boot.netboot.xyz/memdisk iso raw || goto edition
 goto garuda_exit
 
 :garuda_exit
