@@ -8,9 +8,15 @@ set os Garuda
 menu ${os} Linux
 item --gap ${os} Linux Installation
 item --gap
-item --gap This menu has been created by Martin J Keatings. Further information on the menu can be obtained at https://github.com/martinkeat/netboot.xyz-custom. Further information on Garuda Linux can be obtained from https://garudalinux.org/
+item --gap This menu has been created by Martin J Keatings. 
+item --gap Further information on the menu can be obtained 
+item --gap at https://github.com/martinkeat/netboot.xyz-custom. 
 item --gap
-item --gap NOTE: INFORMATION ON THE DIFFERENT VERSIONS OF GARUDA CAN BE FOUND BELOW THE MENU TO FOLLOW.
+item --gap Further information on Garuda Linux can be obtained
+item --gap from https://garudalinux.org/
+item --gap
+item --gap NOTE: INFORMATION ON THE DIFFERENT VERSIONS OF 
+item --gap GARUDA CAN BE FOUND BELOW THE MENU TO FOLLOW.
 item --gap
 item edition ${space} Choose ${os} Edition
 choose garuda_edition || goto garuda_exit
@@ -19,6 +25,7 @@ goto ${garuda_edition}
 :edition
 menu ${os} Editions
 item --gap ${os} Editions
+item --gap
 item dr460nized ${space} Install ${os} Dr460nized Standard Edition
 item dr460nized-gaming ${space} Install ${os} Dr460nized Gaming Edition
 item dr460nized-blackarch ${space} Install ${os} Dr460nized BlackArch Edition
@@ -43,6 +50,8 @@ item --gap a dark, blurry and fully immersive Plasma
 item --gap experience. The workflow is mac-alike with 
 item --gap the appmenu baked right into the top bar.
 item --gap
+item return_to_top ${space} Return to Top
+item --gap
 item --gap **********************************************
 item --gap Garuda Xfce
 item --gap **********************************************
@@ -53,6 +62,8 @@ item --gap being visually appealing and user friendly.
 item --gap Xfce is well known for being a rock-solid
 item --gap & stable desktop environment.
 item --gap
+item return_to_top ${space} Return to Top
+item --gap
 item --gap **********************************************
 item --gap Garuda Linux Gnome
 item --gap **********************************************
@@ -60,6 +71,8 @@ item --gap GNOME is a modern desktop environment which is
 item --gap both clean and beautiful. It is focused on ease
 item --gap of use. For Optimus laptops the GNOME edition 
 item --gap uses Prime render offloading.
+item --gap
+item return_to_top ${space} Return to Top
 item --gap
 item --gap **********************************************
 item --gap Garuda LXQT-Kwin
@@ -69,6 +82,8 @@ item --gap that does not get in your way. Its focus lays
 item --gap on being a lightweight, lagfree desktop with  
 item --gap modern look and feel.
 item --gap
+item return_to_top ${space} Return to Top
+item --gap
 item --gap **********************************************
 item --gap Garuda Wayfire
 item --gap **********************************************
@@ -76,6 +91,8 @@ item --gap Wayfire is a 3D Wayland compositor inspired by
 item --gap Compiz and based on wlroots. It aims to create 
 item --gap a customizable, extendable and lightweight    
 item --gap environment without sacrificing its appearance.
+item --gap
+item return_to_top ${space} Return to Top
 item --gap
 item --gap **********************************************
 item --gap Garuda Qtile
@@ -86,6 +103,8 @@ item --gap jgmenu which makes it very easy and convenient
 item --gap to launch applications without remembering
 item --gap key bindings.
 item --gap
+item return_to_top ${space} Return to Top
+item --gap
 item --gap **********************************************
 item --gap Garuda BSPWM
 item --gap **********************************************
@@ -93,6 +112,8 @@ item --gap BSPWM is a tiling window manager that represents
 item --gap windows as the leaves of a full binary tree. It 
 item --gap only responds to X events and the messages it       
 item --gap receives on a dedicated socket.
+item --gap
+item return_to_top ${space} Return to Top
 item --gap
 item --gap **********************************************
 item --gap Garuda i3WM
@@ -104,6 +125,8 @@ item --gap to handle GTK themes. Garuda do ship the
 item --gap configuration with an easy cheat sheet to get
 item --gap you started. Due to its light resources,
 item --gap it has a really small memory footprint. 
+item --gap
+item return_to_top ${space} Return to Top
 item --gap
 item --gap **********************************************
 item --gap Garuda Sway
@@ -117,6 +140,8 @@ item --gap the best of Wayland native alternatives to
 item --gap offer a seamless transition to the Wayland 
 item --gap compositor.
 item --gap
+item return_to_top ${space} Return to Top
+item --gap
 item --gap **********************************************
 item --gap Garuda Mate
 item --gap **********************************************
@@ -128,6 +153,8 @@ item --gap systems. MATE is under active development to add
 item --gap support for new technologies while preserving a 
 item --gap traditional desktop experience.
 item --gap
+item return_to_top ${space} Return to Top
+item --gap
 item --gap **********************************************
 item --gap Garuda Linux Barebones (Advanced Users Only)
 item --gap **********************************************
@@ -138,12 +165,18 @@ item --gap minimum of packages needed to get started.
 item --gap (You are on your own, Garuda dont provide any 
 item --gap support for Barebones editions!)   
 item --gap
+item return_to_top ${space} Return to Top
+item --gap
 choose installation || goto main_menu
 set version_echo ${installation}
 goto ${installation}
 
+:return_to_top
+goto edition
+
 :dr460nized
 menu ${os} Dr460nized Standard
+item --gap
 item --gap ${os} Dr460nized Standard Edition Versions
 item dr460nized_211005 ${space} Dr460nized Standard Version 211005 (Latest)
 item dr460nized_211004 ${space} Dr460nized Standard Version 211004
@@ -165,6 +198,7 @@ goto boot
 
 :dr460nized-gaming
 menu ${os} Dr460nized Gaming
+item --gap
 item --gap ${os} Dr460nized Gaming Edition Versions
 item dr460nized-gaming_210928 ${space} Dr460nized Gaming Edition Version 210928 (Latest)
 item dr460nized-gaming_210926 ${space} Dr460nized Gaming Edition Version 210926
@@ -181,6 +215,7 @@ goto boot
 
 :dr460nized-blackarch
 menu ${os} Dr460nized BlackArch
+item --gap
 item --gap ${os} Dr460nized BlackArch Edition Versions
 item dr460nized-blackarch_211005 ${space} Dr460nized BlackArch Edition Version 211005 (Latest)
 item dr460nized-blackarch_210928 ${space} Dr460nized BlackArch Edition Version 210928
@@ -197,6 +232,7 @@ goto boot
 
 :xfce
 menu ${os} XFCE
+item --gap
 item --gap ${os} XFCE Edition Versions
 item xfce_211005 ${space} ${os} Xfce Version 211005 (Latest)
 item xfce_210928 ${space} ${os} Xfce Version 210928
@@ -213,6 +249,7 @@ goto boot
 
 :gnome
 menu ${os} Gnome
+item --gap
 item --gap ${os} Gnome Edition Versions
 item gnome_211005 ${space} ${os} Gnome Version 211005 (Latest)
 item gnome_210928 ${space} ${os} Gnome Version 210928
@@ -229,6 +266,7 @@ goto boot
 
 :lxqt-kwin
 menu ${os} LXQt-Kwin
+item --gap
 item --gap ${os} LXQt-Kwin Edition Versions
 item lxqt-kwin_211005 ${space} ${os} Lxqt-kwin Version 211005 (Latest)
 item lxqt-kwin_210928 ${space} ${os} Lxqt-kwin Version 210928
@@ -245,6 +283,7 @@ goto boot
 
 :wayfire
 menu ${os} wayfire
+item --gap
 item --gap ${os} Wayfire Edition Versions
 item wayfire_211005 ${space} ${os} Wayfire Version 211005 (Latest)
 item wayfire_210928 ${space} ${os} Wayfire Version 210928
@@ -261,6 +300,7 @@ goto boot
 
 :qtile
 menu ${os} Qtile
+item --gap
 item --gap ${os} Qtile Edition Versions
 item qtile_211005 ${space} ${os} Qtile Version 211005 (Latest)
 item qtile_210928 ${space} ${os} Qtile Version 210928
@@ -277,6 +317,7 @@ goto boot
 
 :bspwm
 menu ${os} BSPWM
+item --gap
 item --gap ${os} BSPWM Edition Versions
 item bspwm_211005 ${space} ${os} BSPWM Version 211005 (Latest)
 item bspwm_210928 ${space} ${os} BSPWM Version 210928
@@ -293,6 +334,7 @@ goto boot
 
 :i3
 menu ${os} i3WM
+item --gap
 item --gap ${os} i3WM Edition Versions
 item i3_211005 ${space} ${os} i3WM Version 211005 (Latest)
 item i3_210928 ${space} ${os} i3WM Version 210928
@@ -309,6 +351,7 @@ goto boot
 
 :sway
 menu ${os} Sway
+item --gap
 item --gap ${os} Sway Edition Versions
 item sway_211005 ${space} ${os} Sway Version 211005 (Latest)
 item sway_210928 ${space} ${os} Sway Version 210928
@@ -325,6 +368,7 @@ goto boot
 
 :mate
 menu ${os} MATE
+item --gap
 item --gap ${os} MATE Edition Versions
 item mate_210928 ${space} ${os} MATE Version 210928 (Latest)
 item mate_210926 ${space} ${os} MATE Version 210926
@@ -340,6 +384,7 @@ set iso_link https://mirrors.fossho.st/garuda/iso/community/mate/210926/garuda-m
 goto boot
 
 :kde-barebones
+item --gap
 menu ${os} KDE Barebones
 item --gap ${os} KDE Barebones Edition Versions
 item --gap
