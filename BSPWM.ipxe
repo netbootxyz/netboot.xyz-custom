@@ -4,7 +4,7 @@
 ### Menu by Martin J Keatings
 
 set os garuda
-set edition BSWM
+set edition BSPWM
 
 menu ${os}
 item --gap ${os} ${edition} Versions
