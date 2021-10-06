@@ -406,8 +406,13 @@ goto boot
 :boot
 echo Stand-by - Now downloading ${os} ${version_echo}
 initrd ${iso_link}
-chain http://boot.netboot.xyz/memdisk iso raw || goto edition
+chain http://boot.netboot.xyz/memdisk iso raw || goto retry
+boot
 goto garuda_exit
+
+:retry
+imgfree  # Discard any already-downloaded images
+goto boot
 
 :garuda_exit
 clear menu
