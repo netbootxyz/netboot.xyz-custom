@@ -5,23 +5,21 @@
 
 set os Garuda
 menu ${os}
-item --gap Official Releases
-item KDE-Dr460nized ${space} ${os} KDE Dr460nized
-item KDE-Dr460nized-Gaming-Edition ${space} ${os} KDE Dr460nized Gaming Edition
-item KDE-Dr460nized-BlackArch ${space} ${os} KDE Dr460nized Black Arch Edition
-item XFCE ${space} ${os} XFCE Edition
-item Gnome ${space} ${os} Gnome Edition
-item LXQT-Kwin ${space} ${os} LXQT Kwin Edition
-item Wayfire ${space} ${os} Wayfire Edition (Wayland 3d Compositor)
-item Qtile ${space} ${os} Qtile Edition
-item BSPWM ${space} ${os} BSPWM Edition
-item i3WM ${space} ${os} i3WM Edition
-item Sway ${space} ${os} Sway Edition
-item Mate ${space} ${os} MATE Edition
-item Barebones ${space} ${os} Linux Barebones (Advanced Users Only)
+item --gap ${os} BSPWM Edition Versions
+item BSPWM211005 ${space} ${os} BSPWM Edition (Version 211005) (Latest)
+item BSPWM210928 ${space} ${os} BSPWM Edition (Version 210928)
 choose version || goto garuda_exit
 
-:option_two
+:BSPWM211005
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://path.to/iso
+initrd http://mirrors.fossho.st/garuda/iso/garuda/bspwm/211005/garuda-bspwm-linux-zen-211005.iso
 boot || goto Garuda_exit
+
+:BSPWM210928
+kernel https://boot.netboot.xyz/memdisk raw iso
+initrd http://mirrors.fossho.st/garuda/iso/garuda/bspwm/210928/garuda-bspwm-linux-zen-210928.iso
+boot || goto Garuda_exit
+
+:garuda_exit
+clear menu
+exit 0
