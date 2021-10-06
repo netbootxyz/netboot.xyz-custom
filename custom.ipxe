@@ -406,14 +406,12 @@ goto boot
 :boot
 imgfree
 echo Stand-by - Now downloading ${os} ${version_echo}
-initrd ${iso_link}
-chain http://boot.netboot.xyz/memdisk iso raw || goto retry
-boot
+sanboot ${iso_link} || goto retry
 goto garuda_exit
 
 :retry
-echo Stand-by - Now downloading ${os} ${version_echo}
-wait 10
+echo Woops! Something went wrong, let's give it another try with ${os} ${version_echo}! Just a moment!
+sleep 10
 goto boot
 
 :garuda_exit
