@@ -8,7 +8,7 @@ set os Garuda
 menu ${os} Linux
 item --gap ${os} Linux Installation
 item --gap
-item --gap This menu has been created by Martin J Keaings. Further information on the menu can be obtained at https://github.com/martinkeat/netboot.xyz-custom. Further information on Garuda Linux can be obtained from https://garudalinux.org/
+item --gap This menu has been created by Martin J Keatings. Further information on the menu can be obtained at https://github.com/martinkeat/netboot.xyz-custom. Further information on Garuda Linux can be obtained from https://garudalinux.org/
 item --gap
 item --gap NOTE: INFORMATION ON THE DIFFERENT VERSIONS OF GARUDA CAN BE FOUND BELOW THE MENU TO FOLLOW.
 item --gap
