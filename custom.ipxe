@@ -1,0 +1,18 @@
+#!ipxe
+### Garuda Linux 
+### https://garudalinux.org/
+### Menu by Martin J Keatings
+
+set os Garuda
+menu ${os}
+item --gap Official Releases
+item Garuda ${space} ${os} Linux
+choose version || goto garuda_exit
+
+:Garuda
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/martinkeat/netboot.xyz-custom/master/custom.ipxe || goto custom
+
+:gardua_exit
+chain utils.ipxe
+exit
