@@ -4,6 +4,8 @@
 ### Menu by Martin J Keatings
 
 set os Garuda
+set github_user martinkeat
+
 menu ${os}
 item --gap Official Releases
 item KDE-Dr460nized ${space} ${os} KDE Dr460nized
@@ -73,6 +75,6 @@ chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master
 echo Chains into another menu...
 chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Barebones.ipxe || goto Garuda
 
-:custom_exit
-chain utils.ipxe
-exit
+:garuda_exit
+clear menu
+exit 0
