@@ -4,14 +4,341 @@
 ### Menu by Martin J Keatings
 
 set os Garuda
-menu ${os}
-item Garuda_versions ${space} ${os} Linux
-choose version || goto garuda_exit
 
-:Garuda_versions
-echo 
-chain https://raw.githubusercontent.com/martinkeat/netboot.xyz-custom/master/Garuda.ipxe || goto custom
+:live_menu
+menu ${os}
+item garduda ${space} ${os} Linux
+choose edition || goto live_exit
+goto ${edition}
+
+:edition
+menu ${os} Editions
+item --gap ${os} Editions
+item --gap
+item --gap **********************************************
+item --gap Garuda KDE Dr460nized Editions
+item --gap **********************************************
+item --gap The dr460nized editions of Garuda Linux offer 
+item --gap a dark, blurry and fully immersive Plasma
+item --gap experience. The workflow is mac-alike with 
+item --gap the appmenu baked right into the top bar.
+item --gap
+item dr460nized ${space} Install ${os} Dr460nized Standard Edition
+item dr460nized-gaming ${space} Install ${os} Dr460nized Gaming Edition
+item dr460nized-blackarch ${space} Install ${os} Dr460nized BlackArch Edition
+item --gap
+item --gap **********************************************
+item --gap Garuda Xfce
+item --gap **********************************************
+item --gap Xfce is a lightweight desktop environment for 
+item --gap UNIX-like operating systems. It aims to be 
+item --gap fast and low on system resources, while still  
+item --gap being visually appealing and user friendly.
+item --gap Xfce is well known for being a rock-solid
+item --gap & stable desktop environment.
+item --gap
+item xfce ${space} Install ${os} Xfce
+item --gap
+item --gap **********************************************
+item --gap Garuda Linux Gnome
+item --gap **********************************************
+item --gap GNOME is a modern desktop environment which is 
+item --gap both clean and beautiful. It is focused on ease
+item --gap of use. For Optimus laptops the GNOME edition 
+item --gap uses Prime render offloading.
+item --gap
+item gnome ${space} Install ${os} Linux Gnome
+item --gap
+item --gap **********************************************
+item --gap Garuda LXQT-Kwin
+item --gap **********************************************
+item --gap LXQt is a lightweight Qt desktop environment 
+item --gap that does not get in your way. Its focus lays 
+item --gap on being a lightweight, lagfree desktop with  
+item --gap modern look and feel.
+item --gap
+item lxqt-kwin ${space} Install ${os} LXQT-Kwin
+item --gap
+item --gap **********************************************
+item --gap Garuda Wayfire
+item --gap **********************************************
+item --gap Wayfire is a 3D Wayland compositor inspired by 
+item --gap Compiz and based on wlroots. It aims to create 
+item --gap a customizable, extendable and lightweight    
+item --gap environment without sacrificing its appearance.
+item --gap
+item wayfire ${space} Install ${os} Wayfire
+item --gap
+item --gap **********************************************
+item --gap Garuda Qtile
+item --gap **********************************************
+item --gap Qtile is a dynamic extensible window manager  
+item --gap which is easy to customize. Garuda Qtile uses  
+item --gap jgmenu which makes it very easy and convenient     
+item --gap to launch applications without remembering
+item --gap key bindings.
+item --gap
+item qtile ${space} Install ${os} Qtile
+item --gap
+item --gap **********************************************
+item --gap Garuda BSPWM
+item --gap **********************************************
+item --gap BSPWM is a tiling window manager that represents 
+item --gap windows as the leaves of a full binary tree. It 
+item --gap only responds to X events and the messages it       
+item --gap receives on a dedicated socket.
+item --gap
+item bspwm ${space} Install ${os} BSPWM
+item --gap
+item --gap **********************************************
+item --gap Garuda i3WM
+item --gap **********************************************
+item --gap i3-wm is a lightweight window manager that is 
+item --gap operated exclusively with the keyboard. It has 
+item --gap a simple and easy configuration with LXappearance      
+item --gap to handle GTK themes. Garuda do ship the
+item --gap configuration with an easy cheat sheet to get
+item --gap you started. Due to its light resources,
+item --gap it has a really small memory footprint. 
+item --gap 
+item i3 ${space} Install ${os} i3WM
+item --gap
+item --gap **********************************************
+item --gap Garuda Sway
+item --gap **********************************************
+item --gap Garuda Sway edition ships with a completed 
+item --gap configuration with easy to use keybindings 
+item --gap and a cheat-sheet to help you get started.       
+item --gap Following the Nord color scheme it is both 
+item --gap good to look at and just as fast utilising 
+item --gap the best of Wayland native alternatives to 
+item --gap offer a seamless transition to the Wayland 
+item --gap compositor.
+item --gap
+item sway ${space} Install ${os} Sway
+item --gap
+item --gap **********************************************
+item --gap Garuda Mate
+item --gap **********************************************
+item --gap The MATE Desktop Environment is the continuation  
+item --gap of GNOME 2. It provides an intuitive and 
+item --gap attractive desktop environment using traditional        
+item --gap metaphors for Linux and other Unix-like operating 
+item --gap systems. MATE is under active development to add  
+item --gap support for new technologies while preserving a 
+item --gap traditional desktop experience.
+item --gap
+item mate ${space} Install ${os} Mate
+item --gap
+item --gap **********************************************
+item --gap Garuda Linux Barebones (Advanced Users Only)
+item --gap **********************************************
+item --gap Garuda Linux Barebones is made for users who do 
+item --gap not want extra software and functionalities and 
+item --gap complain about bloat. It contains only the bare 
+item --gap minimum of packages needed to get started.             
+item --gap (You are on your own, Garuda dont provide any 
+item --gap support for Barebones editions!)   
+item --gap
+item kde-barebones ${space} Install ${os} Linux Barebones
+choose installation || goto live_menu
+set version_echo ${installation}
+goto ${installation}
+
+:dr460nized
+item dr460nized_211005 ${space} Dr460nized Standard Version 211005 (Latest)
+item dr460nized_211004 ${space} Dr460nized Standard Version 211004
+item dr460nized_210928 ${space} Dr460nized Standard Version 210928
+choose dr460nized_version || goto edition
+goto ${dr460nized_version}
+
+:dr460nized_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/dr460nized/211005/garuda-dr460nized-linux-zen-211005.iso
+goto boot
+
+:dr460nized_211004
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/dr460nized/211004/garuda-dr460nized-linux-zen-211004.iso
+goto boot
+
+:dr460nized_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/dr460nized/210928/garuda-dr460nized-linux-zen-210928.iso
+goto boot
+
+:dr460nized-gaming
+item dr460nized-gaming_210928 ${space} Dr460nized Gaming Edition Version 210928 (Latest)
+item dr460nized-gaming_210926 ${space} Dr460nized Gaming Edition Version 210926
+choose dr460nized-gaming_version || goto edition
+goto ${dr460nized-gaming_version}
+
+:dr460nized-gaming_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/dr460nized-gaming/210928/garuda-dr460nized-gaming-linux-zen-210928.iso
+goto boot
+
+:dr460nized-gaming_210926
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/dr460nized-gaming/210926/garuda-dr460nized-gaming-linux-zen-210926.iso
+goto boot
+
+:dr460nized-blackarch
+item dr460nized-blackarch_211005 ${space} Dr460nized BlackArch Edition Version 211005 (Latest)
+item dr460nized-blackarch_210928 ${space} Dr460nized BlackArch Edition Version 210928
+choose dr460nized-blackarch_version || goto edition
+goto ${dr460nized-blackarch_version}
+
+:dr460nized-blackarch_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/dr460nized-blackarch/211005/garuda-dr460nized-blackarch-linux-zen-211005.iso
+goto boot
+
+:dr460nized-blackarch_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/dr460nized-blackarch/210928/garuda-dr460nized-blackarch-linux-zen-210928.iso
+goto boot
+
+:xfce
+item xfce_211005 ${space} ${os} Xfce Version 211005 (Latest)
+item xfce_210928 ${space} ${os} Xfce Version 210928
+choose xfce_version || goto edition
+goto ${xfce_version}
+
+:xfce_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/xfce/211005/garuda-xfce-linux-lts-211005.iso
+goto boot
+
+:xfce_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/xfce/210928/garuda-xfce-linux-lts-210928.iso
+goto boot
+
+:gnome
+item gnome_211005 ${space} ${os} Gnome Version 211005 (Latest)
+item gnome_210928 ${space} ${os} Gnome Version 210928
+choose gnome_version || goto edition
+goto ${gnome_version}
+
+:gnome_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/gnome/211005/garuda-gnome-linux-zen-211005.iso
+goto boot
+
+:gnome_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/gnome/210928/garuda-gnome-linux-zen-210928.iso
+goto boot
+
+:lxqt-kwin
+item lxqt-kwin_211005 ${space} ${os} Lxqt-kwin Version 211005 (Latest)
+item lxqt-kwin_210928 ${space} ${os} Lxqt-kwin Version 210928
+choose lxqt-kwin_version || goto edition
+goto ${lxqt-kwin_version}
+
+:lxqt-kwin_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/lxqt-kwin/211005/garuda-lxqt-kwin-linux-zen-211005.iso
+goto boot
+
+:lxqt-kwin_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/lxqt-kwin/210928/garuda-lxqt-kwin-linux-zen-210928.iso
+goto boot
+
+:wayfire
+item wayfire_211005 ${space} ${os} Wayfire Version 211005 (Latest)
+item wayfire_210928 ${space} ${os} Wayfire Version 210928
+choose wayfire_version || goto edition
+goto ${wayfire_version}
+
+:wayfire_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/wayfire/211005/garuda-wayfire-linux-zen-211005.iso
+goto boot
+
+:wayfire_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/wayfire/210928/garuda-wayfire-linux-zen-210928.iso
+goto boot
+
+:qtile
+item qtile_211005 ${space} ${os} Qtile Version 211005 (Latest)
+item qtile_210928 ${space} ${os} Qtile Version 210928
+choose qtile_version || goto edition
+goto ${qtile_version}
+
+:qtile_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/qtile/211005/garuda-qtile-linux-zen-211005.iso
+goto boot
+
+:qtile_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/qtile/210928/garuda-qtile-linux-zen-210928.iso
+goto boot
+
+:bspwm
+item bspwm_211005 ${space} ${os} BSPWM Version 211005 (Latest)
+item bspwm_210928 ${space} ${os} BSPWM Version 210928
+choose bspwm_version || goto edition
+goto ${bspwm_version}
+
+:bspwm_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/bspwm/211005/garuda-bspwm-linux-zen-211005.iso
+goto boot
+
+:bspwm_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/bspwm/210928/garuda-bspwm-linux-zen-210928.iso
+goto boot
+
+:i3
+item i3_211005 ${space} ${os} i3WM Version 211005 (Latest)
+item i3_210928 ${space} ${os} i3WM Version 210928
+choose i3_version || goto edition
+goto ${i3_version}
+
+:i3_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/i3/211005/garuda-i3-linux-zen-211005.iso
+goto boot
+
+:i3_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/i3/210928/garuda-i3-linux-zen-210928.iso
+goto boot
+
+:sway
+item sway_211005 ${space} ${os} Sway Version 211005 (Latest)
+item sway_210928 ${space} ${os} Sway Version 210928
+choose sway_version || goto edition
+goto ${sway_version}
+
+:sway_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/sway/211005/garuda-sway-linux-zen-211005.iso
+goto boot
+
+:sway_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/sway/210928/garuda-sway-linux-zen-210928.iso
+goto boot
+
+:mate
+item mate_210928 ${space} ${os} MATE Version 210928 (Latest)
+item mate_210926 ${space} ${os} MATE Version 210926
+choose mate_version || goto edition
+goto ${mate_version}
+
+:mate_210928 
+set iso_link https://mirrors.fossho.st/garuda/iso/community/mate/210928/garuda-mate-linux-zen-210928.iso
+goto boot
+
+:mate_210926
+set iso_link https://mirrors.fossho.st/garuda/iso/community/mate/210926/garuda-mate-linux-zen-210926.iso
+goto boot
+
+:kde-barebones
+item kde-barebones_211005 ${space} ${os} KDE barebones Version 211005 (Latest)
+item kde-barebones_210928 ${space} ${os} KDE barebones Version 210928
+choose kde-barebones_version || goto edition
+goto ${kde-barebones_version}
+
+:kde-barebones_211005
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/kde-barebones/211005/garuda-kde-barebones-linux-lts-211005.iso
+goto boot
+
+:kde-barebones_210928
+set iso_link http://mirrors.fossho.st/garuda/iso/garuda/kde-barebones/210928/garuda-kde-barebones-linux-lts-210928.iso
+goto boot
+
+:boot
+echo Stand-by - Now downloading ${os} ${version_echo}
+initrd ${iso_link}
+chain http://boot.netboot.xyz/memdisk iso raw || goto live_menu
+goto garuda_exit
 
 :garuda_exit
 clear menu
 exit 0
+
