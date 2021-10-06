@@ -404,6 +404,7 @@ set iso_link http://mirrors.fossho.st/garuda/iso/garuda/kde-barebones/210928/gar
 goto boot
 
 :boot
+imgfree
 echo Stand-by - Now downloading ${os} ${version_echo}
 initrd ${iso_link}
 chain http://boot.netboot.xyz/memdisk iso raw || goto retry
@@ -411,7 +412,8 @@ boot
 goto garuda_exit
 
 :retry
-imgfree  # Discard any already-downloaded images
+echo Stand-by - Now downloading ${os} ${version_echo}
+wait 10
 goto boot
 
 :garuda_exit
