@@ -12,10 +12,8 @@ item 211005 ${space} ${os} ${edition} Edition (Version 211005) (Latest)
 item 210928 ${space} ${os} ${edition} Edition (Version 210928)
 choose version || goto garuda_exit
 
-imgfree
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://mirrors.fossho.st/garuda/iso/garuda/bspwm/${version}/garuda-bspwm-linux-zen-${version}.iso
-boot || goto Garuda_exit
+sanboot --no-describe http://mirrors.fossho.st/garuda/iso/garuda/bspwm/${version}/garuda-bspwm-linux-zen-${version}.iso || goto garuda_exit
+goto start
 
 :garuda_exit
 clear menu
