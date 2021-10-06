@@ -3,21 +3,18 @@
 ### https://garudalinux.org/
 ### Menu by Martin J Keatings
 
-set os Garuda
+set os garuda
+set edition BSWM
+
 menu ${os}
-item --gap ${os} BSPWM Edition Versions
-item BSPWM211005 ${space} ${os} BSPWM Edition (Version 211005) (Latest)
-item BSPWM210928 ${space} ${os} BSPWM Edition (Version 210928)
+item --gap ${os} ${edition} Versions
+item 211005 ${space} ${os} ${edition} Edition (Version 211005) (Latest)
+item 210928 ${space} ${os} ${edition} Edition (Version 210928)
 choose version || goto garuda_exit
 
-:BSPWM211005
+imgfree
 kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://mirrors.fossho.st/garuda/iso/garuda/bspwm/211005/garuda-bspwm-linux-zen-211005.iso
-boot || goto Garuda_exit
-
-:BSPWM210928
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://mirrors.fossho.st/garuda/iso/garuda/bspwm/210928/garuda-bspwm-linux-zen-210928.iso
+initrd http://mirrors.fossho.st/garuda/iso/garuda/bspwm/${version}/garuda-bspwm-linux-zen-${version}.iso
 boot || goto Garuda_exit
 
 :garuda_exit
