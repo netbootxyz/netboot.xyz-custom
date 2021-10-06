@@ -1,36 +1,77 @@
 #!ipxe
-###
-### netboot.xyz-custom menu example
-###
+### Garuda Linux 
+### https://garudalinux.org/
+### Menu by Martin J Keatings
 
-:custom
-clear custom_choice
-menu This is a Test Menu
-item --gap This is the first sub menu
-item option_one ${space} Loading a kernel and initrd
-item option_two ${space} Loading an ISO
-item --gap This is a second sub menu
-item option_three ${space} Loads another custom sub menu
-item option_four ${space} This is option four
-choose custom_choice || goto custom_exit
-echo ${cls}
-goto ${custom_choice}
-goto custom_exit
+set os Garuda
+menu ${os}
+item --gap Official Releases
+item KDE-Dr460nized ${space} ${os} KDE Dr460nized
+item KDE-Dr460nized-Gaming-Edition ${space} ${os} KDE Dr460nized Gaming Edition
+item KDE-Dr460nized-BlackArch ${space} ${os} KDE Dr460nized Black Arch Edition
+item XFCE ${space} ${os} XFCE Edition
+item Gnome ${space} ${os} Gnome Edition
+item LXQT-Kwin ${space} ${os} LXQT Kwin Edition
+item Wayfire ${space} ${os} Wayfire Edition (Wayland 3d Compositor)
+item Qtile ${space} ${os} Qtile Edition
+item BSPWM ${space} ${os} BSPWM Edition
+item i3WM ${space} ${os} i3WM Edition
+item Sway ${space} ${os} Sway Edition
+item Mate ${space} ${os} MATE Edition
+item Barebones ${space} ${os} Linux Barebones (Advanced Users Only)
+choose version || goto garuda_exit
 
-:option_one
-kernel http://path.to/vmlinuz
-initrd http://path.to/initrd
-imgargs vmlinuz put_kernel_img_args_here
-boot || goto custom_exit
-
-:option_two
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://path.to/iso
-boot || goto custom_exit
-
-:option_three
+:KDE-Dr460nized
 echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom1.ipxe || goto custom
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/KDE-Dr460nized.ipxe || goto Garuda
+
+:KDE-Dr460nized-Gaming-Edition
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/KDE-Dr460nized-Gaming-Edition.ipxe || goto Garuda
+
+:KDE-Dr460nized-BlackArch
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/KDE-Dr460nized-BlackArch.ipxe || goto Garuda
+
+:XFCE
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/XFCE.ipxe || goto Garuda
+
+:Gnome
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Gnome.ipxe || goto Garuda
+
+:LXQT-Kwin
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/LXQT-Kwin.ipxe || goto Garuda
+
+:Wayfire
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Wayfire.ipxe || goto Garuda
+
+:Qtile
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Qtile.ipxe || goto Garuda
+
+:BSPWM
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/BSPWM.ipxe || goto Garuda
+
+:i3WM
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/i3WM.ipxe || goto Garuda
+
+:Sway
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Sway.ipxe || goto Garuda
+
+:Mate
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Mate.ipxe || goto Garuda
+
+:Barebones
+echo Chains into another menu...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Barebones.ipxe || goto Garuda
 
 :custom_exit
 chain utils.ipxe
