@@ -23,57 +23,9 @@ item Mate ${space} ${os} MATE Edition
 item Barebones ${space} ${os} Linux Barebones (Advanced Users Only)
 choose version || goto garuda_exit
 
-:KDE-Dr460nized
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/KDE-Dr460nized.ipxe || goto Garuda
-
-:KDE-Dr460nized-Gaming-Edition
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/KDE-Dr460nized-Gaming-Edition.ipxe || goto Garuda
-
-:KDE-Dr460nized-BlackArch
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/KDE-Dr460nized-BlackArch.ipxe || goto Garuda
-
-:XFCE
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/XFCE.ipxe || goto Garuda
-
-:Gnome
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Gnome.ipxe || goto Garuda
-
-:LXQT-Kwin
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/LXQT-Kwin.ipxe || goto Garuda
-
-:Wayfire
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Wayfire.ipxe || goto Garuda
-
-:Qtile
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Qtile.ipxe || goto Garuda
-
-:BSPWM
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/BSPWM.ipxe || goto Garuda
-
-:i3WM
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/i3WM.ipxe || goto Garuda
-
-:Sway
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Sway.ipxe || goto Garuda
-
-:Mate
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Mate.ipxe || goto Garuda
-
-:Barebones
-echo Chains into another menu...
-chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/Barebones.ipxe || goto Garuda
+imgfree
+echo loading...
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/${version}.ipxe || goto garuda_exit
 
 :garuda_exit
 clear menu
