@@ -404,17 +404,19 @@ set iso_link http://mirrors.fossho.st/garuda/iso/garuda/kde-barebones/210928/gar
 goto boot
 
 :boot
+set src ${iso_link}
 imgfree
 echo Stand-by - Now downloading ${os} ${version_echo}
-sanboot ${iso_link} || goto retry
+initrd ${src}
+chain https://boot.netboot.xyz/memdisk iso raw
+boot || goto woops
 goto garuda_exit
 
-:retry
-echo Woops! Something went wrong, let's give it another try with ${os} ${version_echo}! Just a moment!
+:woops
+echo Woops! Well! That didn't go too great! The hamster seems to have fallen off his wheel. Try again.
 sleep 10
-goto boot
+goto main_menu
 
 :garuda_exit
 clear menu
 exit 0
-
