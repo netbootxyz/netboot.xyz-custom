@@ -5,8 +5,6 @@
 
 :start
 echo Hello world!
-sleep 10
-goto custom_exit
-
-:custom_exit
-exit 0
+kernel https://boot.netboot.xyz/memdisk iso raw
+initrd https://releases.ubuntu.com/focal/ubuntu-20.04.5-live-server-amd64.iso
+boot
