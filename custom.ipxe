@@ -3,10 +3,51 @@
 ### netboot.xyz-custom menu
 ###
 
-:start
-echo Hello world!
-sleep 10
-goto custom_exit
+:custom
+clear custom_choice
+set gore_url http://192.168.1.245:8095
+menu Linux Installers - Current Arch [ ${arch} ]
+item --gap Linux Distros:
+item debian11 ${space} Debian11
+item efi-debian11 ${space} EFI Debian11
+item efi-centos8-dl360 ${space} EFI CentOS8 DL360 Cloud
+choose menu || goto genouest_exit
+echo ${cls}
+goto ${menu} ||
+
+:debian11
+imgfree
+echo Booting Debian Bullseye installer...
+set base-url https://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64/
+set preseed-url ${gore_url}/debian/preseed.cfg
+set firmwares http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/testing/current/firmware.cpio.gz
+kernel ${base-url}/linux
+initrd ${base-url}/initrd.gz
+initrd ${firmwares}
+imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
+boot
+
+:efi-debian11
+imgfree
+echo Booting Debian Bullseye installer...
+set base-url https://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64/
+set preseed-url ${gore_url}/debian/efi/preseed.cfg
+set firmwares http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/testing/current/firmware.cpio.gz
+kernel ${base-url}/linux
+initrd ${base-url}/initrd.gz
+initrd ${firmwares}
+imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
+boot
+goto genouest_menu
+
+:efi-centos8-dl360
+set base http://linuxsoft.cern.ch/centos-vault/8.3.2011/BaseOS/x86_64/os
+prompt -k 0x197e -t 2000 Press F12 to install CentOS... || exit
+kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
+initrd ${base}/images/pxeboot/initrd.img
+boot
+goto genouest_menu
 
 :custom_exit
-exit 0
+chain utils.ipxe
+exit
