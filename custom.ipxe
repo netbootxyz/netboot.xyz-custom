@@ -18,7 +18,7 @@ goto ${menu} ||
 :debian11
 imgfree
 echo Booting Debian Bullseye installer...
-set base-url https://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64/
+set base-url http://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64
 set preseed-url ${gore_url}/debian/preseed.cfg
 set firmwares http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/testing/current/firmware.cpio.gz
 kernel ${base-url}/linux
@@ -30,7 +30,7 @@ boot
 :efi-debian11
 imgfree
 echo Booting Debian Bullseye installer...
-set base-url https://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64/
+set base-url http://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64
 set preseed-url ${gore_url}/debian/efi/preseed.cfg
 set firmwares http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/testing/current/firmware.cpio.gz
 kernel ${base-url}/linux
