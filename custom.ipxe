@@ -33,10 +33,11 @@ boot
 :cluster
 imgfree
 echo Booting Cluster Centos7
-set base http://mirror.centos.org/centos-7/7.9.2009/os/x86_64
+#set base http://mirror.centos.org/centos-7/7.9.2009/os/x86_64
+set base ${gore_url}/centos/images/7.9/
 set params inst.ks=${gore_url}/centos/7.9/ks-cluster.cfg
-kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base} ${params} initrd=initrd.img
-initrd ${base}/images/pxeboot/initrd.img
+kernel ${base}/vmlinuz initrd=initrd.img inst.repo=${base} ${params} initrd=initrd.img
+initrd ${base}/initrd.img
 boot 
 goto custom
 
