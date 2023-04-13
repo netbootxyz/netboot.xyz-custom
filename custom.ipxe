@@ -1,11 +1,15 @@
 #!ipxe
+
 ###
-### netboot.xyz-custom menu
+### netboot.xyz-custom menu Genouest
 ###
 
 :custom
 clear custom_choice
-set gore_url http://192.168.1.245:8095
+set pxe_url http://192.168.1.245:8095
+set deb11_url ${pxe_url}/debian/images/11.6/
+set centos7_url ${pxe_url}/centos/images/7.9/
+set centos8_url ${pxe_url}/centos/images/8.3/
 menu Linux Installers - Current Arch [ ${arch} ]
 item --gap Linux Distros:
 item debian11 ${space} Debian11
@@ -19,48 +23,41 @@ goto ${menu} ||
 :debian11
 imgfree
 echo Booting Debian Bullseye installer...
-#set base-url http://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64
-set base-url ${gore_url}/debian/images/11.6/
-set preseed-url ${gore_url}/debian/preseed.cfg
-#set firmwares http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/testing/current/firmware.cpio.gz
-set firmwares ${gore_url}/debian/images/11.6/firmware-testing.cpio.gz
-kernel ${base-url}/linux
-initrd ${base-url}/initrd.gz
+set preseed-url ${pxe_url}/debian/preseed.cfg
+set firmwares ${pxe_url}/debian/images/11.6/firmware-testing.cpio.gz
+kernel ${deb11_url}/linux
+initrd ${deb11_url}/initrd.gz
 initrd ${firmwares}
 imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
 boot
+goto custom
 
 :cluster
 imgfree
 echo Booting Cluster Centos7
-#set base http://mirror.centos.org/centos-7/7.9.2009/os/x86_64
-set base ${gore_url}/centos/images/7.9/
-set params inst.ks=${gore_url}/centos/7.9/ks-cluster.cfg
-kernel ${base}/vmlinuz initrd=initrd.img inst.repo=${base} ${params} initrd=initrd.img
-initrd ${base}/initrd.img
+set params inst.ks=${pxe_url}/centos/7.9/ks-cluster.cfg
+kernel ${centos7_url}/vmlinuz inst.repo=${centos7_url} ${params} initrd=initrd.img 
+initrd ${centos7_url}/initrd.img
 boot 
 goto custom
 
-
-
 :efi-debian11
 imgfree
-echo Booting Debian Bullseye installer...
-set base-url http://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64
-set preseed-url ${gore_url}/debian/efi/preseed.cfg
-set firmwares http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/testing/current/firmware.cpio.gz
-kernel ${base-url}/linux
-initrd ${base-url}/initrd.gz
+echo Booting Debian Bullseye EFI installer...
+set preseed-url ${pxe_url}/debian/efi/preseed.cfg
+set firmwares ${pxe_url}/debian/images/11.6/firmware-testing.cpio.gz
+kernel ${deb11_url}/linux
+initrd ${deb11_url}/initrd.gz
 initrd ${firmwares}
 imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
 boot
 goto custom
 
 :efi-centos8-dl360
-set base http://linuxsoft.cern.ch/centos-vault/8.3.2011/BaseOS/x86_64/os
+imgfree
 prompt -k 0x197e -t 2000 Press F12 to install CentOS... || exit
-kernel ${base}/images/pxeboot/vmlinuz initrd=initrd.img inst.repo=${base}
-initrd ${base}/images/pxeboot/initrd.img
+kernel ${centos8_url}/vmlinuz initrd=initrd.img inst.repo=${centos8_url}
+initrd ${centos8_url}/initrd.img
 boot
 goto custom
 
