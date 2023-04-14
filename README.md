@@ -1,4 +1,4 @@
-## netboot.xyz-custom Genouest
+## netboot.xyz-custom
 
 Fork me!  This repo will allow you to create custom menus within netboot.xyz.
 It works by using your github user name that you input and chains to this URL:
@@ -12,3 +12,14 @@ name from the Utilities menu (**Tools:** -> **Utilities** -> **netboot.xyz tools
 will cause a custom menu to appear in the main menu.
 
 If you are new to iPXE scripting, take a look at `custom.ipxe.example` and build up from that.
+
+## Genouest
+
+genouest user is set automatically at boot by puppet which adds `/etc/netbootxyz/config/menus/local-vars.ipxe` on pxe server.  
+
+```
+#!ipxe
+### used for adding local variables before loading the menu
+### deployed by puppet
+set github_user genouest
+```
