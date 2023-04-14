@@ -63,5 +63,5 @@ boot
 goto custom
 
 :custom_exit
-chain utils.ipxe
+chain menu.ipxe
 exit
