@@ -16,7 +16,7 @@ item debian11 ${space} Debian11
 item cluster ${space} Cluster Centos7
 item efi-debian11 ${space} EFI Debian11
 item efi-centos8-dl360 ${space} EFI CentOS8 DL360 Cloud
-choose menu || goto genouest_exit
+choose menu || goto custom_exit
 echo ${cls}
 goto ${menu} ||
 
@@ -24,6 +24,18 @@ goto ${menu} ||
 imgfree
 echo Booting Debian Bullseye installer...
 set preseed-url ${pxe_url}/debian/preseed.cfg
+set firmwares ${pxe_url}/debian/images/11.6/firmware-testing.cpio.gz
+kernel ${deb11_url}/linux
+initrd ${deb11_url}/initrd.gz
+initrd ${firmwares}
+imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
+boot
+goto custom
+
+:efi-debian11
+imgfree
+echo Booting Debian Bullseye EFI installer...
+set preseed-url ${pxe_url}/debian/efi/preseed.cfg
 set firmwares ${pxe_url}/debian/images/11.6/firmware-testing.cpio.gz
 kernel ${deb11_url}/linux
 initrd ${deb11_url}/initrd.gz
@@ -42,22 +54,9 @@ initrd ${centos7_url}/initrd.img
 boot 
 goto custom
 
-:efi-debian11
-imgfree
-echo Booting Debian Bullseye EFI installer...
-set preseed-url ${pxe_url}/debian/efi/preseed.cfg
-set firmwares ${pxe_url}/debian/images/11.6/firmware-testing.cpio.gz
-kernel ${deb11_url}/linux
-initrd ${deb11_url}/initrd.gz
-initrd ${firmwares}
-imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
-boot
-goto custom
-
 :efi-centos8-dl360
 imgfree
 set base http://linuxsoft.cern.ch/centos-vault/8.3.2011/BaseOS/x86_64/os
-prompt -k 0x197e -t 2000 Press F12 to install CentOS... || exit
 kernel ${centos8_url}/vmlinuz initrd=initrd.img inst.repo=${base}
 initrd ${centos8_url}/initrd.img
 boot
