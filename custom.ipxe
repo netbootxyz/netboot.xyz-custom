@@ -35,10 +35,11 @@ goto custom
 :efi-debian11
 imgfree
 echo Booting Debian Bullseye EFI installer...
+set base-url http://deb.debian.org/debian/dists/bullseye/main/installer-amd64/current/images/netboot/debian-installer/amd64
 set preseed-url ${pxe_url}/debian/efi/preseed.cfg
-set firmwares ${pxe_url}/debian/images/11.6/firmware-testing.cpio.gz
-kernel ${deb11_url}linux
-initrd ${deb11_url}initrd.gz
+set firmwares http://cdimage.debian.org/cdimage/unofficial/non-free/firmware/testing/current/firmware.cpio.gz
+kernel ${base-url}/linux
+initrd ${base-url}/initrd.gz
 initrd ${firmwares}
 imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
 boot
