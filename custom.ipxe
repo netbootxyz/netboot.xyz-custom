@@ -37,8 +37,8 @@ imgfree
 echo Booting Debian Bullseye EFI installer...
 set preseed-url ${pxe_url}/debian/efi/preseed.cfg
 set firmwares ${pxe_url}/debian/images/11.6/firmware-testing.cpio.gz
-kernel ${deb11_url}/linux
-initrd ${deb11_url}/initrd.gz
+kernel ${deb11_url}linux
+initrd ${deb11_url}initrd.gz
 initrd ${firmwares}
 imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
 boot
