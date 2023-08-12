@@ -3,20 +3,6 @@
 ### netboot.xyz-custom menu example
 ###
 
-:custom
-clear custom_choice
-menu This is a Test Menu
-item --gap This is the first sub menu
-item option_one Loading a kernel and initrd
-item option_two Loading an ISO
-item --gap This is a second sub menu
-item option_three Loads another custom sub menu
-item option_four This is option four
-choose custom_choice || goto custom_exit
-echo ${cls}
-goto ${custom_choice}
-goto custom_exit
-
 :option_one
 chain https://raw.githubusercontent.com/${4ndr0666}/netboot.xyz-custom/master/custom.ipxe
 boot || goto custom_exit
