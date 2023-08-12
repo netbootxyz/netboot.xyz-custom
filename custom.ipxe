@@ -5,7 +5,7 @@
 
 :option_one
 chain https://raw.githubusercontent.com/${4ndr0666}/netboot.xyz-custom/master/custom.ipxe
-boot || goto custom_exit
+boot 0
 
 :custom_exit
 chain utils.ipxe
