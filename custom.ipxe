@@ -7,11 +7,6 @@
 chain https://raw.githubusercontent.com/${4ndr0666}/netboot.xyz-custom/master/custom.ipxe
 boot || goto custom_exit
 
-:option_two
-kernel https://boot.netboot.xyz/memdisk raw iso
-initrd http://path.to/iso
-boot || goto custom_exit
-
 :custom_exit
 chain utils.ipxe
 exit 0
