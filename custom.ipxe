@@ -7,18 +7,43 @@
 :custom
 clear custom_choice
 set pxe_url http://192.168.1.245:8095
+set deb12_url ${pxe_url}/debian/images/12/
 set deb11_url ${pxe_url}/debian/images/11.6/
 set centos7_url ${pxe_url}/centos/images/7.9/
 set centos8_url ${pxe_url}/centos/images/8.3/
 menu Linux Installers - Current Arch [ ${arch} ]
 item --gap Linux Distros:
+item debian12 ${space} Debian12
 item debian11 ${space} Debian11
 item cluster ${space} Cluster Centos7
+item efi-debian12 ${space} EFI Debian12
 item efi-debian11 ${space} EFI Debian11
 item efi-centos8-dl360 ${space} EFI CentOS8 DL360 Cloud
 choose menu || goto custom_exit
 echo ${cls}
 goto ${menu} ||
+
+:debian12
+imgfree
+echo Booting Debian bookworm installer..
+set base-url http://deb.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64
+set preseed-url ${pxe_url}/debian/preseed.cfg
+kernel ${base-url}/linux
+initrd ${base-url}/initrd.gz
+imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
+boot
+goto custom
+
+:efi-debian12
+imgfree
+echo Booting Debian bookworm EFI installer...
+set base-url http://deb.debian.org/debian/dists/bookworm/main/installer-amd64/current/images/netboot/debian-installer/amd64
+set preseed-url ${pxe_url}/debian/efi/preseed.cfg
+kernel ${base-url}/linux
+initrd ${base-url}/initrd.gz
+imgargs linux auto=true url=${preseed-url} hostname=unassigned-hostname domain=unassigned-domain
+boot
+goto custom
 
 :debian11
 imgfree
