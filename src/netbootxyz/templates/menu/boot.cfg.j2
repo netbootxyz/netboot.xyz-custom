@@ -1,0 +1,143 @@
+#!ipxe
+
+:global_vars
+# set site name
+set site_name {{ site_name }}
+
+# set boot domain
+set boot_domain {{ boot_domain }}
+
+# set location of memdisk
+set memdisk {{ memdisk_location }}
+
+# set location of custom netboot.xyz live assets
+set live_endpoint {{ live_endpoint }}
+
+# signature check enabled?
+set sigs_enabled {{ sigs_enabled | default(false) | bool | lower }}
+
+# set location of signatures for sources
+set sigs {{ sigs_location }}
+
+# set location of latest iPXE
+iseq ${platform} efi && set ipxe_disk netboot.xyz-snponly.efi || set ipxe_disk netboot.xyz-undionly.kpxe
+
+# set default boot timeout
+set boot_timeout {{ boot_timeout }}
+
+######################################
+# Media Locations for Licensed Distros
+######################################
+
+set rhel_base_url {{ rhel_base_url | default("") }}
+set win_base_url {{ win_base_url | default("") }}
+
+##################
+# official mirrors
+##################
+:mirrors
+{% for key, value in releases.items() | sort(attribute='1.name') %}
+{% if value.mirror is defined and value.base_dir is defined %}
+### {{ value.name }}
+set {{ key }}_mirror {{ value.mirror }}
+set {{ key }}_base_dir {{ value.base_dir }}
+
+{% endif %}
+{% endfor %}
+#################################################
+# determine architectures and enable menu options
+#################################################
+:architectures
+set menu_linux 1
+set menu_bsd 1
+set menu_unix 1
+set menu_freedos 1
+set menu_live 1
+set menu_pci 1
+set menu_windows 1
+set menu_utils 1
+iseq ${arch} i386 && goto i386 ||
+iseq ${arch} x86_64 && goto x86_64 ||
+iseq ${arch} arm64 && goto arm64 ||
+goto architectures_end
+:x86_64
+set menu_linux_i386 0
+iseq ${platform} efi && goto efi ||
+goto architectures_end
+:i386
+set menu_linux 0
+set menu_linux_i386 1
+set menu_bsd 1
+set menu_unix 0
+set menu_freedos 1
+set menu_live 0
+set menu_windows 0
+set menu_utils 1
+iseq ${platform} efi && goto efi ||
+goto architectures_end
+:arm64
+set menu_linux 0
+set menu_linux_arm 1
+set menu_unix 0
+set menu_freedos 0
+set menu_live 0
+set menu_live_arm 1
+set menu_windows 0
+set menu_utils 0
+set menu_utils_arm 1
+set menu_pci 0
+iseq ${platform} efi && goto efi ||
+goto architectures_end
+:efi
+set menu_bsd 0
+set menu_freedos 0
+set menu_unix 0
+set menu_pci 0
+goto architectures_end
+:architectures_end
+goto clouds
+
+###################################
+# set iPXE cloud provider specifics
+###################################
+:clouds
+iseq ${ipxe_cloud_config} gce && goto gce ||
+iseq ${ipxe_cloud_config} metal && goto metal ||
+iseq ${ipxe_cloud_config} packet && goto metal ||
+goto clouds_end
+
+:gce
+set cmdline console=ttyS0,115200n8
+goto clouds_end
+
+:metal
+iseq ${arch} i386 && goto metal_x86_64 ||
+iseq ${arch} x86_64 && goto metal_x86_64 ||
+iseq ${arch} arm64 && goto metal_arm64 ||
+goto clouds_end
+
+:metal_x86_64
+set cmdline console=ttyS1,115200n8
+iseq ${platform} efi && set ipxe_disk netboot.xyz-metal-snp.efi || set ipxe_disk netboot.xyz-metal.kpxe
+set menu_linux_i386 0
+set menu_freedos 0
+set menu_windows 0
+iseq ${platform} efi && set menu_pci 0 ||
+goto clouds_end
+
+:metal_arm64
+set cmdline console=ttyAMA0,115200
+set ipxe_disk netboot.xyz-metal-arm64-snp.efi
+set menu_bsd 0
+set menu_freedos 0
+set menu_live 0
+set menu_windows 0
+set menu_utils 0
+set menu_pci 0
+goto clouds_end
+
+:clouds_end
+goto end
+
+:end
+exit

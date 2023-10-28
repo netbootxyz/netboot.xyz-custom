@@ -1,0 +1,138 @@
+#!ipxe
+{% if early_menu_enabled -%}
+{{ early_menu_contents }}
+{%- endif %}
+
+:start
+isset ${arch} && goto skip_arch_detect ||
+cpuid --ext 29 && set arch x86_64 || set arch i386
+iseq ${buildarch} arm64 && set arch arm64 ||
+:skip_arch_detect
+chain --autofree boot.cfg ||
+echo Attempting to retrieve latest upstream version number...
+chain --timeout 5000 https://boot.netboot.xyz/version.ipxe ||
+ntp {{ time_server }} ||
+iseq ${cls} serial && goto ignore_cls ||
+set cls:hex 1b:5b:4a  # ANSI clear screen sequence - "^[[J"
+set cls ${cls:string}
+:ignore_cls
+
+{% if 'x' in boot_version %}
+:version_check
+set latest_version {{ boot_version }}
+echo ${cls}
+iseq ${version} ${latest_version} && goto version_up2date ||
+echo
+echo Updated version of {{ site_name }} is available:
+echo
+echo Running version.....${version}
+echo Updated version.....${latest_version}
+echo
+echo Please download the latest version from {{ site_name }}.
+echo
+echo Attempting to chain to latest version...
+chain --autofree http://${boot_domain}/ipxe/${ipxe_disk} ||
+:version_up2date
+{% endif %}
+
+isset ${menu} && goto ${menu} ||
+isset ${ip} || dhcp
+
+:main_menu
+clear menu
+set space:hex 20:20
+set space ${space:string}
+isset ${next-server} && menu ${site_name} v${version} - next-server: ${next-server} || menu ${site_name}
+item --gap Default:
+item local ${space} Boot from local hdd
+item --gap Distributions:
+iseq ${menu_linux} 1 && item linux ${space} Linux Network Installs (64-bit) ||
+iseq ${menu_linux_i386} 1 && item linux-i386 ${space} Linux Network Installs (32-bit) ||
+iseq ${menu_linux_arm} 1 && item linux-arm ${space} Linux Network Installs (arm64) ||
+iseq ${menu_live} 1 && item live ${space} Live CDs ||
+iseq ${menu_live_arm} 1 && item live-arm ${space} Live CDs ||
+iseq ${menu_bsd} 1 && item bsd ${space} BSD Installs ||
+iseq ${menu_unix} 1 && item unix ${space} Unix Network Installs ||
+iseq ${menu_freedos} 1 && item freedos ${space} FreeDOS ||
+iseq ${menu_windows} 1 && item windows ${space} Windows ||
+item --gap Tools:
+iseq ${menu_utils} 1 && iseq ${platform} efi && item utils-efi ${space} Utilities (UEFI) ||
+iseq ${menu_utils} 1 && iseq ${platform} pcbios && iseq ${arch} x86_64 && item utils-pcbios-64 ${space} Utilities (64-bit) ||
+iseq ${menu_utils} 1 && iseq ${platform} pcbios && iseq ${arch} i386 && item utils-pcbios-32 ${space} Utilities (32-bit) ||
+iseq ${menu_utils_arm} 1 && item utils-arm ${space} Utilities (arm64) ||
+item change_arch ${space} Architecture: ${arch}
+item shell ${space} iPXE shell
+item netinfo ${space} Network card info
+iseq ${menu_pci} 1 && item lspci ${space} PCI Device List ||
+item about ${space} About netboot.xyz
+{% if sigs_menu | bool %}
+item --gap Signature Checks:
+{% if sigs_enabled | bool %}
+item sig_check ${space} {{ site_name }} [ enabled: ${sigs_enabled} ]
+{% endif %}
+{% endif %}
+{% if custom_github_menus | bool %}
+isset ${github_user} && item --gap Custom Github Menu: ||
+isset ${github_user} && item custom-github ${space} ${github_user}'s Custom Menu ||
+{% endif %}
+{% if custom_url_menus | bool %}
+isset ${custom_url} && item --gap Custom URL Menu: ||
+isset ${custom_url} && item custom-url ${space} Custom URL Menu ||
+{% endif %}
+{% if custom_generate_menus | bool %}
+item --gap Custom User Menus: ||
+item custom-user ${space} Custom User Menus
+{% endif %}
+isset ${menu} && set timeout 0 || set timeout ${boot_timeout}
+choose --timeout ${timeout} --default ${menu} menu || goto local
+echo ${cls}
+goto ${menu} ||
+iseq ${sigs_enabled} true && goto verify_sigs || goto change_menu
+
+:verify_sigs
+imgverify ${menu}.ipxe ${sigs}${menu}.ipxe.sig || goto error
+goto change_menu
+
+:change_menu
+chain ${menu}.ipxe || goto error
+goto main_menu
+
+:error
+echo Error occured, press any key to return to menu ...
+prompt
+goto main_menu
+
+:local
+echo Booting from local disks ...
+exit 0
+
+:shell
+echo Type "exit" to return to menu.
+set menu main_menu
+shell
+goto main_menu
+
+:change_arch
+iseq ${arch} x86_64 && set arch i386 && set menu_linux_i386 1 && set menu_linux 0 && goto main_menu ||
+iseq ${arch} i386 && set arch x86_64 && set menu_linux_i386 0 && set menu_linux 1 && goto main_menu ||
+goto main_menu
+
+:sig_check
+iseq ${sigs_enabled} true && set sigs_enabled false || set sigs_enabled true
+goto main_menu
+
+:about
+chain https://boot.netboot.xyz/about.ipxe || chain about.ipxe
+goto main_menu
+
+:custom-github
+chain https://raw.githubusercontent.com/${github_user}/netboot.xyz-custom/master/custom.ipxe || goto error
+goto main_menu
+
+:custom-url
+chain ${custom_url}/custom.ipxe || goto error
+goto main_menu
+
+:custom-user
+chain custom/custom.ipxe
+goto main_menu

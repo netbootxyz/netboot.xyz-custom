@@ -1,0 +1,54 @@
+#!ipxe
+
+# Tiny Core Linux
+# http://tinycorelinux.net/downloads.html
+
+set tinycore_mirror {{ releases.tinycore.mirror }}
+
+:arch_menu
+set os Tiny Core Linux
+menu ${os}
+item --gap  Please choose a version below:
+item x86 ${space} ${os} x86 (default)
+item x86_64 ${space} ${os} x86_64
+choose arch || goto tinycore_exit
+goto ${arch} 
+
+:x86
+menu ${os}
+item --gap  Please choose a version below:
+{% for item in releases.tinycore.versions %}
+{% if item.arch == "x86" %}
+item {{ item.code_name }} ${space} ${os} {{ item.name }}
+{% endif %}
+{% endfor %}
+choose version || goto tinycore_exit
+goto ${version}
+
+:x86_64
+menu ${os}
+item --gap  Please choose a version below:
+{% for item in releases.tinycore.versions %}
+{% if item.arch == "x86_64" %}
+item {{ item.code_name }} ${space} ${os} {{ item.name }}
+{% endif %}
+{% endfor %}
+choose version || goto tinycore_exit
+goto ${version}
+
+{% for item in releases.tinycore.versions %}
+:{{ item.code_name }}
+set kernel_url ${tinycore_mirror}{{ item.kernel }}
+set initrd_url ${tinycore_mirror}{{ item.initrd }}
+goto boot
+{% endfor %}
+
+:boot
+imgfree
+kernel ${kernel_url} loglevel=3 {{ kernel_params }}
+initrd ${initrd_url}
+boot
+
+:tinycore_exit
+clear menu
+exit 0

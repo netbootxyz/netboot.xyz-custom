@@ -1,0 +1,34 @@
+---
+
+- name: Print Bootloader Disks to Build
+  ansible.builtin.debug:
+    var: bootloader_disks
+
+- name: Generate menus
+  ansible.builtin.include_tasks: generate_menus.yml
+  when:
+    - generate_menus | default(true) | bool
+
+- name: Generate custom menus
+  ansible.builtin.include_tasks: generate_menus_custom.yml
+  when:
+    - custom_generate_menus | default(false) | bool
+
+- name: Generate iPXE bootloaders
+  ansible.builtin.include_tasks: generate_disks.yml
+  with_items:
+    - "{{ bootloader_disks }}"
+  loop_control:
+    loop_var: bootloader_file
+  when:
+    - generate_disks | default(true) | bool
+
+- name: Generate checksums
+  ansible.builtin.include_tasks: generate_checksums.yml
+  when:
+    - generate_checksums | default(true) | bool
+
+- name: Generate signatures
+  ansible.builtin.include_tasks: generate_signatures.yml
+  when:
+    - generate_signatures | default(false) | bool

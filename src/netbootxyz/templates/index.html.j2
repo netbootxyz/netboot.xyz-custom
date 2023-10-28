@@ -1,0 +1,164 @@
+#!ipxe
+####       {{ boot_domain }} initial loader        ####
+#### see https://netboot.xyz for more information ####
+{% if bootloader_https_enabled | bool %}
+set conn_type https
+chain --autofree https://{{ boot_domain }}/menu.ipxe || echo HTTPS failed... attempting HTTP...
+{% endif %}
+{% if bootloader_http_enabled | bool %}
+set conn_type http
+chain --autofree http://{{ boot_domain }}/menu.ipxe || echo HTTP failed, localbooting...
+{% endif %}
+exit
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ site_name }} BootLoaders - Powered by netboot.xyz</title>
+    <meta name='description' content='Download links for available {{ site_name }} bootloaders.'>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      table, th, td {
+      padding: 5px;
+      border: 1px solid black; 
+      }
+    </style>
+  </head>
+  <body>
+  <div style="font-family: monospace, fixed; font-weight: bold;">
+  {% if index_title.stdout is defined %}
+  {{ index_title.stdout }}
+  {% else %}
+  <h1>{{ site_name }}</h1>
+  {% endif %}
+  <p>
+  Version: {{ boot_version }}<br>
+  Powered by <a href=https://netboot.xyz>netboot.xyz</a>
+  </p>
+
+{% if generate_disks_hybrid == true %}
+  <p>x86_64 Legacy and EFI Combined iPXE Bootloaders</p>
+  <table style="width:100%">
+    <!-- table header -->
+    <tr>
+       <th style="width:10%;"> Type </th>
+       <th style="width:20%;"> Bootloader </th>
+       <th style="width:70%;"> Description </th>
+    </tr>
+    <!-- table rows -->
+    {% for item in bootloaders.hybrid %}
+    <tr>
+       <td> {{ item.type }} </td>
+       <td> <a href="ipxe/{{ site_name }}{{ item.output_bin }}">{{ site_name }}{{ item.output_bin }}</a> </td>
+       <td> {{ item.desc }} </td>
+    </tr>
+    {% endfor %}
+  </table>
+  <p>Multiarch (x86_64 and arm64) Legacy and EFI Combined iPXE Bootloaders</p>
+  <table style="width:100%">
+    <!-- table header -->
+    <tr>
+       <th style="width:10%;"> Type </th>
+       <th style="width:20%;"> Bootloader </th>
+       <th style="width:70%;"> Description </th>
+    </tr>
+    <!-- table rows -->
+    {% for item in bootloaders.multiarch %}
+    <tr>
+       <td> {{ item.type }} </td>
+       <td> <a href="ipxe/{{ site_name }}{{ item.output_bin }}">{{ site_name }}{{ item.output_bin }}</a> </td>
+       <td> {{ item.desc }} </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+{% if generate_disks_legacy == true %}
+  <p>x86_64 Legacy (PCBIOS) iPXE Bootloaders</p>
+  <table style="width:100%">
+    <!-- table header -->
+    <tr>
+       <th style="width:10%;"> Type </th>
+       <th style="width:20%;"> Bootloader </th>
+       <th style="width:70%;"> Description </th>
+    </tr>
+    <!-- table rows -->
+    {% for item in bootloaders.legacy %}
+    <tr>
+       <td> {{ item.type }} </td>
+       <td> <a href="ipxe/{{ site_name }}{{ item.output_bin }}">{{ site_name }}{{ item.output_bin }}</a> </td>
+       <td> {{ item.desc }} </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+{% if generate_disks_efi == true %}
+  <p>x86_64 UEFI iPXE Bootloaders</p>
+
+  <table style="width:100%">
+    <!-- table header -->
+    <tr>
+       <th style="width:10%;"> Type </th>
+       <th style="width:20%;"> Bootloader </th>
+       <th style="width:70%;"> Description </th>
+    </tr>
+    <!-- table rows -->
+    {% for item in bootloaders.uefi %}
+    <tr>
+       <td> {{ item.type }} </td>
+       <td> <a href="ipxe/{{ site_name }}{{ item.output_bin }}">{{ site_name }}{{ item.output_bin }}</a> </td>
+       <td> {{ item.desc }} </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+{% if generate_disks_arm == true %}
+  <p>ARM64 iPXE Bootloaders</p>
+
+  <table style="width:100%">
+    <!-- table header -->
+    <tr>
+       <th style="width:10%;"> Type </th>
+       <th style="width:20%;"> Bootloader </th>
+       <th style="width:70%;"> Description </th>
+    </tr>
+    <!-- table rows -->
+    {% for item in bootloaders.arm %}
+    <tr>
+       <td> {{ item.type }} </td>
+       <td> <a href="ipxe/{{ site_name }}{{ item.output_bin }}">{{ site_name }}{{ item.output_bin }}</a> </td>
+       <td> {{ item.desc }} </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+{% if generate_disks_rpi == true %}
+  <p>Raspberry Pi iPXE Bootloaders</p>
+
+  <table style="width:100%">
+    <!-- table header -->
+    <tr>
+       <th style="width:10%;"> Type </th>
+       <th style="width:20%;"> Bootloader </th>
+       <th style="width:70%;"> Description </th>
+    </tr>
+    <!-- table rows -->
+    {% for item in bootloaders.rpi %}
+    <tr>
+       <td> {{ item.type }} </td>
+       <td> <a href="ipxe/{{ site_name }}{{ item.output_bin }}">{{ site_name }}{{ item.output_bin }}</a> </td>
+       <td> {{ item.desc }} </td>
+    </tr>
+    {% endfor %}
+  </table>
+{% endif %}
+
+  <p>Checksums<p>
+
+  <a href="ipxe/{{ site_name }}-sha256-checksums.txt">SHA256 checksums</a>
+  </div>
+  </body>
+</html>

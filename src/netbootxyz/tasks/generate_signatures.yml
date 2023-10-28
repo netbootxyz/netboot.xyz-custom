@@ -1,0 +1,21 @@
+---
+- name: Gather list of source files
+  ansible.builtin.command: ls {{ netbootxyz_root }}
+  register: source_files
+
+- name: Create directories for signatures
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - "{{ sigs_dir }}"
+
+- name: Generate signatures for source files
+  ansible.builtin.shell: |
+    openssl cms -sign -binary -noattr -in {{ netbootxyz_root }}/{{ item }} \
+    -signer {{ codesign_cert_filename }} -inkey {{ codesign_key_filename }} -certfile {{ cert_file_filename }} -outform DER \
+    -out {{ sigs_dir }}/{{ item }}.sig
+  args:
+    chdir: "{{ cert_dir }}"
+  with_items:
+    - "{{ source_files.stdout_lines }}"

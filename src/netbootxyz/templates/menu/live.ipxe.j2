@@ -1,0 +1,58 @@
+#!ipxe
+
+goto ${menu} ||
+
+:live_menu
+menu Live Boot Distributions - Current Arch [ ${arch} ]
+item --gap Live Boot Distributions
+item live-backbox ${space} BackBox
+item live-bluestar ${space} Bluestar Linux
+item live-bodhi ${space} Bodhi
+item live-debian ${space} Debian
+item live-deepin ${space} Deepin
+item live-devuan ${space} Devuan
+item live-elementary ${space} elementary OS
+item live-endeavouros ${space} EndeavourOS
+item live-fatdog ${space} Fatdog64
+item live-fedora ${space} Fedora
+item live-feren ${space} Feren OS
+item live-garuda ${space} Garuda Linux
+item live-hrmpf ${space} hrmpf
+item live-k3os ${space} K3OS
+item live-kali ${space} Kali
+item live-kodachi ${space} Kodachi
+item live-neon ${space} KDE Neon
+item live-lite ${space} Linux Lite
+item live-lxle ${space} LXLE
+item live-manjaro ${space} Manjaro
+item live-mint ${space} Mint
+item live-nitrux ${space} Nitrux
+item live-parrot ${space} Parrot OS
+item live-peppermint ${space} Peppermint
+item live-popos ${space} Pop OS
+item live-q4os ${space} Q4OS
+item live-raizo ${space} Live Raizo
+item live-regolith ${space} Regolith
+item live-septor ${space} Septor
+item live-sparky ${space} SparkyLinux
+item live-tails ${space} Tails
+item tinycore ${space} Tiny Core Linux
+item live-ubuntu ${space} Ubuntu
+item live-voyager ${space} Voyager
+item live-zorin ${space} Zorin OS
+choose menu || goto live_exit
+echo ${cls}
+goto ${menu} ||
+iseq ${sigs_enabled} true && goto verify_sigs || goto change_menu
+
+:verify_sigs
+imgverify ${menu}.ipxe ${sigs}${menu}.ipxe.sig || goto error
+goto change_menu
+
+:change_menu
+chain ${menu}.ipxe || goto error
+goto live_menu
+
+:live_exit
+clear menu
+exit 0

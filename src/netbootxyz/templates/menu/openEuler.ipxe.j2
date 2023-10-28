@@ -1,0 +1,69 @@
+#!ipxe
+
+# openEuler
+# https://openeuler.org/
+
+isset ${dhcp-server} && set ipparam ip=dhcp || set ipparam ip=${ip}::${gateway}:${netmask}:::none nameserver=${dns}
+set ipparam BOOTIF=${netX/mac} ${ipparam}
+
+goto ${menu} ||
+
+:openEuler
+clear osversion
+set os {{ releases.openEuler.name }}
+menu ${os} - ${arch}
+{% for item in releases.openEuler.versions %}
+item {{ item.code_name }} ${space} ${os} {{ item.name }}
+{% endfor %}
+isset ${osversion} || choose osversion || goto linux_menu
+echo ${cls}
+set dir ${osversion}/OS/${arch}
+set repo ${openEuler_mirror}/${dir}
+goto boottype
+
+:boottype
+set ova ${os} ${osversion}
+menu ${os} ${arch} boot type
+item graphical ${ova} graphical installer
+item text ${ova} text based installer
+item rescue ${ova} rescue
+item kickstart ${ova} set kickstart url [ ${ks_url} ]
+isset ${bt} || choose bt || goto openEuler
+echo ${cls}
+iseq ${bt} text && goto text ||
+iseq ${bt} rescue && goto rescue ||
+iseq ${bt} kickstart && goto kickstart ||
+iseq ${bt} kickstart_device && goto kickstart_device ||
+goto bootos_images
+
+:graphical
+set install_mode inst.graphical ||
+goto bootos_images
+
+:text
+set install_mode inst.text ||
+goto bootos_images
+
+:rescue
+set params rescue ||
+goto bootos_images
+
+:kickstart
+echo -n Specify kickstart URL for ${os} ${osversion}: && read ks_url
+set params inst.ks=${ks_url} ||
+clear bt
+goto boottype
+
+:bootos_images
+imgfree
+kernel ${openEuler_mirror}/${dir}/images/pxeboot/vmlinuz inst.repo=${repo} ${install_mode} ${params} ${ipparam} {{ kernel_params }}
+initrd ${openEuler_mirror}/${dir}/images/pxeboot/initrd.img
+echo
+echo MD5sums:
+md5sum vmlinuz initrd.img
+boot
+goto linux_menu
+
+:linux_menu
+clear menu
+exit 0

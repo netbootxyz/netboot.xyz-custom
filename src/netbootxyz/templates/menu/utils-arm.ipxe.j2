@@ -1,0 +1,40 @@
+#!ipxe
+
+menu Utilities
+item --gap Utilities:
+{% for key, value in utilitiesarm.items() | sort(attribute='1.name') %}
+{% if value.enabled %}
+item {{ key }} ${space} {{ value.name }}
+{% endif %}
+{% endfor %}
+item --gap netboot.xyz tools:
+item nbxyz ${space} netboot.xyz endpoints
+choose --default ${menu} menu || goto utils_exit
+echo ${cls}
+goto ${menu} ||
+chain ${menu}.ipxe || goto utils_exit
+goto utils_exit
+
+{% for key, value in utilitiesarm.items() | sort %}
+{% if value.enabled | bool and value.type == "direct" %}
+:{{ key }}
+imgfree
+kernel {{ value.kernel }}
+initrd {{ value.initrd }}
+boot
+goto utils_exit
+{% endif %}
+{% endfor %}
+
+{% for key, value in utilitiesefi.items() | sort %}
+{% if value.enabled | bool and value.type == "sanboot" %}
+:{{ key }}
+imgfree
+sanboot {{ value.kernel }}
+goto utils_exit
+{% endif %}
+{% endfor %}
+
+:utils_exit
+clear menu
+exit 0

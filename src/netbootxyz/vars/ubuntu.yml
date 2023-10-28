@@ -1,0 +1,33 @@
+---
+netbootxyz_packages:
+  - apache2
+  - binutils-dev
+  - binutils-aarch64-linux-gnu
+  - dosfstools
+  - figlet
+  - gcc-aarch64-linux-gnu
+  - build-essential
+  - genisoimage
+  - git
+  - isolinux
+  - liblzma-dev
+  - libslirp-dev
+  - syslinux
+  - syslinux-common
+  - toilet
+
+pipxe_packages:
+  - acpica-tools
+  - binutils
+  - binutils-dev
+  - gcc
+  - libuuid1
+  - make
+  - mtools
+  - perl
+  - python2
+  - subversion
+  - uuid
+  - uuid-dev
+  - virtualenv
+  - xz-utils

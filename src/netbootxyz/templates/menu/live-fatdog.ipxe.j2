@@ -1,0 +1,35 @@
+#!ipxe
+
+goto ${menu} ||
+
+:live_menu
+set os Fatdog64
+menu ${os}
+item --gap ${os} Versions
+{% for key, value in endpoints.items() | sort %}
+{% if value.os == "fatdog" %}
+item {{ value.version }} ${space} ${os} {{ value.version }}
+{% endif %}
+{% endfor %}
+choose live_version || goto live_exit
+goto ${live_version}
+
+
+{% for key, value in endpoints.items() | sort %}
+{% if value.os == "fatdog" %}
+:{{ value.version }}
+set url ${live_endpoint}{{ value.path }}
+goto boot
+
+{% endif %}
+{% endfor %}
+
+:boot
+imgfree
+kernel ${url}vmlinuz rootfstype=ramfs {{ kernel_params }}
+initrd ${url}initrd
+boot
+
+:live_exit
+clear menu
+exit 0

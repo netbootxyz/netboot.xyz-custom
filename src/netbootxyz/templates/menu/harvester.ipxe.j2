@@ -1,0 +1,53 @@
+#!ipxe
+
+# Harvester
+# https://harvesterhci.io/
+# https://docs.harvesterhci.io/v1.0/install/pxe-boot-install/
+
+goto ${menu} ||
+
+:harvester
+set os {{ releases.harvester.name }}
+set os_arch ${arch}
+iseq ${os_arch} x86_64 && set os_arch amd64 ||
+menu ${os} - ${os_arch}
+item --gap Harvester:
+{% for key, value in endpoints.items() | sort %}
+{% if value.os == "harvester" %}
+item harvester_url ${space} Begin install of Harvester ${os} {{ value.version }}
+{% endif %}
+{% endfor %}
+item --gap Parameters:
+item harvester_config_url ${space} Set config-create or config-join.yaml URL: ${harvester_config_url}
+choose --default ${menu} menu || goto harvester_exit
+echo ${cls}
+goto ${menu} ||
+goto harvester_exit
+
+:harvester_config_url
+echo -n Set config.yaml URL:  && read harvester_config_url
+clear menu
+goto harvester
+
+{% for key, value in endpoints.items() | sort %}
+{% if value.os == "harvester" %}
+:harvester_url
+set harvester_url ${live_endpoint}{{ value.path }}
+goto harvester_boot
+{% endif %}
+{% endfor %}
+
+:harvester_boot
+set install_params harvester.install.automatic=true harvester.install.config_url=${harvester_config_url}
+set boot_params ip=dhcp net.ifnames=1 console=ttyS0 console=tty1 rd.cos.disable root=live:${harvester_url}/harvester-rootfs-${os_arch}.squashfs rd.noverifyssl
+imgfree
+kernel ${harvester_url}/harvester-vmlinuz-${os_arch} ${install_params} ${boot_params} {{ kernel_params }}
+initrd ${harvester_url}/harvester-initrd-${os_arch}
+echo
+echo MD5sums:
+md5sum harvester-vmlinuz-${os_arch} harvester-initrd-${os_arch}
+boot
+
+:harvester_exit
+clear menu
+exit 0

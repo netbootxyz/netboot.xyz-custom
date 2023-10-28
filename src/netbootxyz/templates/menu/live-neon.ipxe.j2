@@ -1,0 +1,26 @@
+#!ipxe
+
+goto ${menu} ||
+
+:live_menu
+set os KDE Neon
+menu ${os}
+item --gap ${os} Versions
+item user ${space} ${os} User
+choose live_version || goto live_exit
+goto ${live_version}
+
+:user
+set squash_url ${live_endpoint}{{ endpoints["kde-neon-user"].path }}filesystem.squashfs
+set kernel_url ${live_endpoint}{{ endpoints["kde-neon-user"].path }}
+goto user-boot
+
+:user-boot
+imgfree
+kernel ${kernel_url}vmlinuz ip=dhcp boot=casper netboot=url url=${squash_url} {{ kernel_params }}
+initrd ${kernel_url}initrd.lz
+boot
+
+:live_exit
+clear menu
+exit 0

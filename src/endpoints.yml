@@ -1,0 +1,2030 @@
+endpoints:
+  ubuntu-18.04-live-kernel:
+    path: /ubuntu-core-18.04/releases/download/18.04.5-a39e0666/
+    files:
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '18.04'
+  ubuntu-18.04-default-squash:
+    path: /ubuntu-squash/releases/download/18.04.5-0dd1e29b/
+    files:
+    - filesystem.squashfs
+    os: ubuntu
+    version: '18.04'
+    flavor: GNOME
+    kernel: ubuntu-18.04-live-kernel
+  debian-10-live-kernel:
+    path: /debian-core-10/releases/download/10.13.0-960f6051/
+    files:
+    - initrd
+    - vmlinuz
+    os: debian
+    version: '10'
+  debian-10-default-squash:
+    path: /debian-squash/releases/download/10.10.0-9728909e/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: core
+    kernel: debian-10-live-kernel
+  ubuntu-18.04-xfce-squash:
+    path: /ubuntu-squash/releases/download/18.04.5-88af0c9a/
+    files:
+    - filesystem.squashfs
+    os: ubuntu
+    version: '18.04'
+    flavor: xfce
+    kernel: ubuntu-18.04-live-kernel
+  ubuntu-18.04-KDE-squash:
+    path: /ubuntu-squash/releases/download/18.04.5-9a7bfc44/
+    files:
+    - filesystem.squashfs
+    os: ubuntu
+    version: '18.04'
+    flavor: KDE
+    kernel: ubuntu-18.04-live-kernel
+  ubuntu-18.04-Budgie-squash:
+    path: /ubuntu-squash/releases/download/18.04.5-f6c49db9/
+    files:
+    - filesystem.squashfs
+    os: ubuntu
+    version: '18.04'
+    flavor: Budgie
+    kernel: ubuntu-18.04-live-kernel
+  ubuntu-18.04-MATE-squash:
+    path: /ubuntu-squash/releases/download/18.04.5-a8566ff6/
+    files:
+    - filesystem.squashfs
+    os: ubuntu
+    version: '18.04'
+    flavor: MATE
+    kernel: ubuntu-18.04-live-kernel
+  ubuntu-18.04-kylin-squash:
+    path: /ubuntu-squash/releases/download/18.04.5-ba88a194/
+    files:
+    - filesystem.squashfs
+    os: ubuntu
+    version: '18.04'
+    flavor: kylin
+    kernel: ubuntu-18.04-live-kernel
+  debian-10-xfce-squash:
+    path: /debian-squash/releases/download/10.10.0-e94fae4e/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: xfce
+    kernel: debian-10-live-kernel
+  debian-10-gnome-squash:
+    path: /debian-squash/releases/download/10.10.0-13fd68d4/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: gnome
+    kernel: debian-10-live-kernel
+  debian-10-cinnamon-squash:
+    path: /debian-squash/releases/download/10.10.0-77fb8dba/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: cinnamon
+    kernel: debian-10-live-kernel
+  debian-10-kde-squash:
+    path: /debian-squash/releases/download/10.10.0-fc058090/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: kde
+    kernel: debian-10-live-kernel
+  debian-10-lxde-squash:
+    path: /debian-squash/releases/download/10.10.0-ae0d6ef2/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: lxde
+    kernel: debian-10-live-kernel
+  debian-10-lxqt-squash:
+    path: /debian-squash/releases/download/10.10.0-92b8fed6/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: lxqt
+    kernel: debian-10-live-kernel
+  debian-10-mate-squash:
+    path: /debian-squash/releases/download/10.10.0-e397bfb9/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '10'
+    flavor: mate
+    kernel: debian-10-live-kernel
+  kali-xfce-squash:
+    path: /debian-squash/releases/download/2023.3-e15f31ba/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: kali
+    version: '2023.3'
+    flavor: xfce
+    kernel: kali-xfce-squash
+  kde-neon-user:
+    path: /ubuntu-squash/releases/download/20231019-0714-7c3766d7/
+    files:
+    - vmlinuz
+    - filesystem.squashfs
+    - initrd.lz
+    os: neon
+    version: 20231019-0714
+    flavor: user
+    kernel: kde-neon-user
+  regolith-current:
+    path: /ubuntu-squash/releases/download/1.2-e7db33e3/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: regolith
+    version: current
+    flavor: ubuntu
+    kernel: regolith-current
+  linux-lite-4-squash:
+    path: /ubuntu-squash/releases/download/4.8-feb35fae/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: lite
+    version: '4'
+    kernel: linux-lite-4-squash
+  deepin-15-squash:
+    path: /debian-squash/releases/download/15.11-387f0ae3/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Deepin
+    version: '15'
+    kernel: deepin-15-squash
+  mfsbsd-8:
+    path: /asset-mirror/releases/download/8.4-85c0e522/
+    files:
+    - default.img
+    - special-edition.img
+    os: freebsd
+    version: '8'
+  mfsbsd-9:
+    path: /asset-mirror/releases/download/9.2-dd689447/
+    files:
+    - default.img
+    - special-edition.img
+    os: freebsd
+    version: '9'
+  mfsbsd-10:
+    path: /asset-mirror/releases/download/10.3-e3f93083/
+    files:
+    - default.img
+    - special-edition.img
+    os: freebsd
+    version: '10'
+  mfsbsd-11:
+    path: /asset-mirror/releases/download/11.2-8a7e9144/
+    files:
+    - default.img
+    - special-edition.img
+    os: freebsd
+    version: '11'
+  mfsbsd-12:
+    path: /asset-mirror/releases/download/12.2-e4890b12/
+    files:
+    - default.img
+    - special-edition.img
+    os: freebsd
+    version: '12'
+  feren-squash:
+    path: /ubuntu-squash/releases/download/2023.01-82a26d6f/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: feren
+    version: '2023.01'
+    kernel: feren-squash
+  feren-classic-squash:
+    path: /ubuntu-squash/releases/download/12-2019-b43afc5c/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: feren
+    version: classic
+    kernel: feren-classic-squash
+  breakin:
+    path: /asset-mirror/releases/download/4.26.1-3194c2c3/
+    files:
+    - vmlinuz
+    - initrd
+    os: breakin
+    version: 4.26.1
+  dban:
+    path: /asset-mirror/releases/download/2.3.0-19066390/
+    files:
+    - DBAN.BZI
+    os: dban
+    version: 2.3.0
+  sparky-stable-mingui:
+    path: /debian-squash/releases/download/7.1-89c0cf2f/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: sparky
+    version: stable
+    flavor: xfce-min
+    kernel: sparky-stable-mingui
+  sparky-stable-gui:
+    path: /debian-squash/releases/download/7.1-2a7c2ca2/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: sparky
+    version: stable
+    flavor: xfce
+    kernel: sparky-stable-gui
+  sparky-stable-lxqt:
+    path: /debian-squash/releases/download/7.1-b67b9696/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: sparky
+    version: stable
+    flavor: lxqt
+    kernel: sparky-stable-lxqt
+  sparky-rolling-mingui:
+    path: /debian-squash/releases/download/2023.10-3faf2d90/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: sparky
+    version: rolling
+    flavor: xfce-min
+    kernel: sparky-rolling-mingui
+  sparky-rolling-gui:
+    path: /debian-squash/releases/download/2023.10-39844a40/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: sparky
+    version: rolling
+    flavor: xfce
+    kernel: sparky-rolling-gui
+  sparky-rolling-lxqt:
+    path: /debian-squash/releases/download/2023.10-848cff82/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: sparky
+    version: rolling
+    flavor: lxqt
+    kernel: sparky-rolling-lxqt
+  oracle-8:
+    path: /asset-mirror/releases/download/6-cf10f650/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: oracle
+    version: '8'
+    arch: x86_64
+  oracle-7:
+    path: /asset-mirror/releases/download/u9-a30ff181/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: oracle
+    version: '7'
+    arch: x86_64
+  kodachi-6:
+    path: /ubuntu-squash/releases/download/6.2-2a23039c/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: kodachi
+    version: '6'
+  bodhi-5-standard:
+    path: /ubuntu-squash/releases/download/5.1.0-5d55acb7/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: bodhi
+    version: '5'
+    flavor: standard
+  bodhi-5-apppack:
+    path: /ubuntu-squash/releases/download/5.1.0-0bcb3c87/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: bodhi
+    version: '5'
+    flavor: apppack
+  devuan-ascii:
+    path: /debian-squash/releases/download/2.1-0cd88d39/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: devuan
+    version: '2'
+    flavor: ascii
+  grml-full:
+    path: /debian-squash/releases/download/2022.11-9ff209cc/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: grml
+    version: '2022.11'
+    flavor: full
+  grml-small:
+    path: /debian-squash/releases/download/2022.11-74ca2d5e/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: grml
+    version: '2022.11'
+    flavor: small
+  gparted-stable:
+    path: /debian-squash/releases/download/1.5.0-6-a07a9fe7/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: gparted
+    version: stable
+  rescatux:
+    path: /debian-squash/releases/download/0.72-beta8-e42fc381/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: rescatux
+    version: current
+  caine:
+    path: /ubuntu-squash/releases/download/13.0-9795eb73/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: caine
+    version: '13.0'
+  bootrepair:
+    path: /ubuntu-squash/releases/download/current-e035b00c/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: bootrepair
+    version: current
+  blackarch-installer:
+    path: /asset-mirror/releases/download/2023.04.01-e01a4b3c/
+    files:
+    - initrd
+    - vmlinuz
+    - airootfs.sfs
+    os: blackarch
+    version: current
+  bluestar:
+    path: /asset-mirror/releases/download/6.5.8-2023.10.22-31be18f3/
+    files:
+    - initrd
+    - vmlinuz
+    - airootfs.sfs
+    os: bluestar
+    version: current
+  anarchy:
+    path: /asset-mirror/releases/download/1.3.4-54188370/
+    files:
+    - initrd
+    - vmlinuz
+    - airootfs.sfs
+    os: anarchy
+    version: current
+  zeninstall:
+    path: /asset-mirror/releases/download/2020.05.27-d3f9c78c/
+    files:
+    - initrd
+    - vmlinuz
+    - airootfs.sfs
+    os: zeninstall
+    version: current
+  lxle:
+    path: /ubuntu-squash/releases/download/18.04.3-83291c4b/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: lxle
+    version: current
+  kaspersky-rescue:
+    path: /asset-mirror/releases/download/18-7f6056db/
+    files:
+    - initrd.xz
+    - initrd
+    - vmlinuz
+    - kernel.dat
+    - 000-core.srm
+    - 001-xorg.srm
+    - 002-xfce.srm
+    - 003-kl.srm
+    - 004-krt.srm
+    - 005-bases.srm
+    - 008-firefox.srm
+    os: kaspersky
+    version: '18'
+  septor:
+    path: /debian-squash/releases/download/2022-9adec6a6/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: septor
+    version: current
+  manjaro-xfce-current:
+    path: /manjaro-squash/releases/download/23.0.4-minimal-231015-linux65-55621038/
+    files:
+    - livefs.sfs
+    - rootfs.sfs
+    - mhwdfs.sfs
+    - desktopfs.sfs
+    - initrd
+    - vmlinuz
+    os: manjaro
+    version: current
+    flavor: xfce
+    kernel: manjaro-xfce-current
+  manjaro-gnome-current:
+    path: /manjaro-squash/releases/download/23.0.4-minimal-231015-linux65-121c09b2/
+    files:
+    - livefs.sfs
+    - rootfs.sfs
+    - mhwdfs.sfs
+    - desktopfs.sfs
+    - initrd
+    - vmlinuz
+    os: manjaro
+    version: current
+    flavor: gnome
+    kernel: manjaro-gnome-current
+  manjaro-kde-current:
+    path: /manjaro-squash/releases/download/23.0.4-minimal-231015-linux65-e00f990d/
+    files:
+    - livefs.sfs
+    - rootfs.sfs
+    - mhwdfs.sfs
+    - desktopfs.sfs
+    - initrd
+    - vmlinuz
+    os: manjaro
+    version: current
+    flavor: kde
+    kernel: manjaro-kde-current
+  fatdog:
+    path: /asset-mirror/releases/download/901-a6ec4ca2/
+    files:
+    - vmlinuz
+    - initrd
+    os: fatdog
+    version: current
+  raizo:
+    path: /debian-squash/releases/download/v13.22.09.11i-9e437e24/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: raizo
+    version: current
+  4mlinux:
+    path: /asset-mirror/releases/download/43.1-ed212ebc/
+    files:
+    - initrd
+    - vmlinuz
+    os: 4mlinux
+    version: current
+    flavor: full
+  4mlinux-thesss:
+    path: /asset-mirror/releases/download/43.1-83b93056/
+    files:
+    - initrd
+    - vmlinuz
+    os: 4mlinux
+    version: current
+    flavor: TheSSS
+  4mlinux-bakandimg:
+    path: /asset-mirror/releases/download/43.0-558b1d87/
+    files:
+    - initrd
+    - vmlinuz
+    os: 4mlinux
+    version: current
+    flavor: BakAndImg
+  4mlinux-antivirus:
+    path: /asset-mirror/releases/download/43.0-1.0.1-95fbd3d9/
+    files:
+    - initrd
+    - vmlinuz
+    os: 4mlinux
+    version: current
+    flavor: AntivirusLiveCD
+  ubuntu-20.04-default-squash:
+    path: /ubuntu-squash/releases/download/20.04.6-3a3f16b0/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '20.04'
+    flavor: GNOME
+    kernel: ubuntu-20.04-default-squash
+  ubuntu-20.04-KDE-squash:
+    path: /ubuntu-squash/releases/download/20.04.5-80445908/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '20.04'
+    flavor: KDE
+    kernel: ubuntu-20.04-KDE-squash
+  ubuntu-20.04-XFCE-squash:
+    path: /ubuntu-squash/releases/download/20.04.6-094dbc22/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '20.04'
+    flavor: XFCE
+    kernel: ubuntu-20.04-XFCE-squash
+  ubuntu-20.04-Budgie-squash:
+    path: /ubuntu-squash/releases/download/20.04.6-674fcaaf/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '20.04'
+    flavor: Budgie
+    kernel: ubuntu-20.04-Budgie-squash
+  ubuntu-20.04-MATE-squash:
+    path: /ubuntu-squash/releases/download/20.04.6-44b9de72/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '20.04'
+    flavor: MATE
+    kernel: ubuntu-20.04-MATE-squash
+  ubuntu-20.04-kylin-squash:
+    path: /ubuntu-squash/releases/download/20.04.6-4081e5d4/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '20.04'
+    flavor: kylin
+    kernel: ubuntu-20.04-kylin-squash
+  voyager-focal-squash:
+    path: /ubuntu-squash/releases/download/focal-594b12a7/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Voyager
+    version: focal
+    flavor: focal
+    kernel: voyager-focal-squash
+  pop-20.04-default-squash:
+    path: /ubuntu-squash/releases/download/5-66b7e861/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: pop
+    version: '20.04'
+    flavor: intel-amd
+    kernel: pop-20.04-default-squash
+  pop-20.04-nvidia-squash:
+    path: /ubuntu-squash/releases/download/5-6efd1d75/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: pop
+    version: '20.04'
+    flavor: nvidia
+    kernel: pop-20.04-nvidia-squash
+  nixos-20.03:
+    path: /asset-mirror/releases/download/124244129-bd20f138/
+    files:
+    - bzImage
+    - initrd
+    - netboot.ipxe
+    os: nixos
+    version: '20.03'
+  backbox-7-default-squash:
+    path: /ubuntu-squash/releases/download/7-b47309d4/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: BackBox
+    version: '7'
+    flavor: default
+    kernel: backbox-7-default-squash
+  kodachi-7:
+    path: /ubuntu-squash/releases/download/7.6-5b1ead62/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: kodachi
+    version: '7'
+  linux-lite-5-squash:
+    path: /ubuntu-squash/releases/download/5.8-75cb937c/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: lite
+    version: 5.8
+    kernel: linux-lite-5-squash
+  vyos-rolling:
+    path: /debian-squash/releases/download/1.5-rolling-202310240118-6c714932/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: vyos
+    version: rolling
+    flavor: rolling
+    kernel: vyos-rolling
+  q4os-3.12-plasma-squash:
+    path: /debian-squash/releases/download/3.12-6e0ca54b/
+    files:
+    - filesystem.squashfs
+    os: Q4OS
+    version: '3.12'
+    flavor: plasma
+    kernel: q4os-3.12-default-squash
+  q4os-3.12-default-squash:
+    path: /debian-squash/releases/download/3.12-cf19590d/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Q4OS
+    version: '3.12'
+    flavor: trinity
+    kernel: q4os-3.12-default-squash
+  q4os-3.13-default-squash:
+    path: /debian-squash/releases/download/3.13-18394906/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Q4OS
+    version: '3.13'
+    flavor: trinity
+    kernel: q4os-3.13-default-squash
+  q4os-3.13-plasma-squash:
+    path: /debian-squash/releases/download/3.13-68332b76/
+    files:
+    - filesystem.squashfs
+    os: Q4OS
+    version: '3.13'
+    flavor: plasma
+    kernel: q4os-3.13-default-squash
+  pureos-gnome:
+    path: /ubuntu-squash/releases/download/2020-08-06-83257efc/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: pureos
+    version: current
+    flavor: gnome
+    kernel: pureos-gnome
+  rescuezilla:
+    path: /asset-mirror/releases/download/2.4.2-95c35f90/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: rescuezilla
+    version: 2.4.2
+  deepin-20-squash:
+    path: /debian-squash/releases/download/20.7-2c297f6a/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Deepin
+    version: '20'
+    kernel: deepin-20-squash
+  nitrux-release:
+    path: /ubuntu-squash/releases/download/2022.02.28-e364d0a5/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: nitrux
+    version: 2022.02.28
+  endeavouros:
+    path: /asset-mirror/releases/download/Cassini_Nova-03-2023_R2-36475eee/
+    files:
+    - airootfs.sfs
+    - initrd
+    - vmlinuz
+    os: endeavouros
+    version: Cassini_Nova-03-2023_R2
+  kodachi-8:
+    path: /ubuntu-squash/releases/download/8.2-625e11fa/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: kodachi
+    version: '8'
+  redorescue:
+    path: /asset-mirror/releases/download/4.0.0-8343ee08/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: redorescue
+    version: 4.0.0
+  bodhi-6-standard:
+    path: /ubuntu-squash/releases/download/6.0.0-5efdb7c4/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: bodhi
+    version: '6'
+    flavor: standard
+  bodhi-6-apppack:
+    path: /ubuntu-squash/releases/download/6.0.0-e098bbe5/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: bodhi
+    version: '6'
+    flavor: apppack
+  mfsbsd-13:
+    path: /asset-mirror/releases/download/13.2-0e10bdfd/
+    files:
+    - default.img
+    - special-edition.img
+    os: freebsd
+    version: '13'
+  mint-lmde-cinnamon-squash:
+    path: /debian-squash/releases/download/6-b21fbb46/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: mint
+    version: lmde
+    flavor: Cinnamon
+    kernel: mint-lmde-cinnamon-squash
+  mint-20-mate-squash:
+    path: /ubuntu-squash/releases/download/20.3-2cfd6da3/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: mint
+    version: '20.3'
+    flavor: mate
+    kernel: mint-20-mate-squash
+  mint-20-xfce-squash:
+    path: /ubuntu-squash/releases/download/20.3-62418c01/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: mint
+    version: '20.3'
+    flavor: xfce
+    kernel: mint-20-xfce-squash
+  mint-20-cinnamon-squash:
+    path: /ubuntu-squash/releases/download/20.3-dec83a0e/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: mint
+    version: '20.3'
+    flavor: Cinnamon
+    kernel: mint-20-cinnamon-squash
+  talos:
+    path: /asset-mirror/releases/download/0.13.4-3f5e10e5/
+    files:
+    - vmlinuz
+    - initramfs.xz
+    os: talos
+    version: 0.13.4
+  elementaryos-6-default-squash:
+    path: /ubuntu-squash/releases/download/6-3e90a5ea/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: elementary-os
+    version: '6'
+    kernel: elementaryos-6-default-squash
+  zorin-16-core-squash:
+    path: /ubuntu-squash/releases/download/16.2-ca8ff325/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: zorin
+    version: '16.2'
+    flavor: Core
+    kernel: zorin-16-core-squash
+  debian-11-cinnamon-squash:
+    path: /debian-squash/releases/download/11.7.0-66ae1880/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '11'
+    flavor: cinnamon
+    kernel: debian-11-live-kernel
+  debian-11-live-kernel:
+    path: /debian-core-11/releases/download/11.7.0-95ff084b/
+    files:
+    - initrd
+    - vmlinuz
+    os: debian
+    version: '11'
+  debian-11-gnome-squash:
+    path: /debian-squash/releases/download/11.7.0-7351138e/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '11'
+    flavor: gnome
+    kernel: debian-11-live-kernel
+  debian-11-default-squash:
+    path: /debian-squash/releases/download/11.7.0-bc2052f1/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '11'
+    flavor: core
+    kernel: debian-11-live-kernel
+  debian-11-kde-squash:
+    path: /debian-squash/releases/download/12.0.0-8ba8243d/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '11'
+    flavor: kde
+    kernel: debian-11-live-kernel
+  debian-11-xfce-squash:
+    path: /debian-squash/releases/download/11.7.0-e20e794c/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '11'
+    flavor: xfce
+    kernel: debian-11-live-kernel
+  debian-11-mate-squash:
+    path: /debian-squash/releases/download/11.7.0-45b9e409/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '11'
+    flavor: mate
+    kernel: debian-11-live-kernel
+  debian-11-lxde-squash:
+    path: /debian-squash/releases/download/12.0.0-60fbf655/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: 12.0.0
+    flavor: lxde
+    kernel: debian-12-live-kernel
+  debian-11-lxqt-squash:
+    path: /debian-squash/releases/download/11.7.0-27dada40/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '11'
+    flavor: lxqt
+    kernel: debian-11-live-kernel
+  voyager-bullseye-squash:
+    path: /debian-squash/releases/download/bullseye-11cb9bdc/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Voyager
+    version: bullseye
+    flavor: bullseye
+    kernel: voyager-bullseye-squash
+  memtest86:
+    path: /asset-mirror/releases/download/10.6-ec1f71ad/
+    files:
+    - memtest86-usb.img
+    os: memtest86-free
+    version: '10.6'
+  gentoo-x86:
+    path: /asset-mirror/releases/download/20231016T170159Z-dd9167d8/
+    files:
+    - image.squashfs
+    - initrd
+    - vmlinuz
+    os: gentoo
+    version: 20231016T170159Z
+    arch: x86
+  gentoo-arm64:
+    path: /asset-mirror/releases/download/20231015T223200Z-dd7f103b/
+    files:
+    - image.squashfs
+    - initrd
+    - vmlinuz
+    os: gentoo
+    version: 20231015T223200Z
+    arch: arm64
+  gentoo-amd64:
+    path: /asset-mirror/releases/download/20231015T161657Z-0766e8c3/
+    files:
+    - image.squashfs
+    - initrd
+    - vmlinuz
+    os: gentoo
+    version: 20231015T161657Z
+    arch: amd64
+  tails:
+    path: /asset-mirror/releases/download/5.18-8afedfc6/
+    files:
+    - vmlinuz
+    - initrd.img
+    - 9990-misc-helpers.sh
+    os: tails
+    version: '5.18'
+    arch: amd64
+  hrmpf:
+    path: /asset-mirror/releases/download/20230105-b11dcf35/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: hrmpf
+    version: '20230105'
+  ubuntu-netboot-20.04-arm64:
+    path: /ubuntu-squash/releases/download/20.04.5-6cc292c2/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: 20.04.5
+    codename: focal
+    flavor: netboot
+    kernel: ubuntu-netboot-20.04-arm64
+    arch: arm64
+  ubuntu-netboot-20.04-amd64:
+    path: /ubuntu-squash/releases/download/20.04.6-2543bbcb/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: 20.04.6
+    codename: focal
+    flavor: netboot
+    kernel: ubuntu-netboot-20.04-amd64
+    arch: amd64
+  systemrescue-i686:
+    path: /asset-mirror/releases/download/9.03-0f19cc5c/
+    files:
+    - airootfs.sfs
+    - initrd
+    - vmlinuz
+    os: systemrescue
+    version: 9.03
+    arch: i686
+  systemrescue-amd64:
+    path: /asset-mirror/releases/download/10.02-a0627929/
+    files:
+    - airootfs.sfs
+    - initrd
+    - vmlinuz
+    os: systemrescue
+    version: 10.02
+    arch: amd64
+  shredos-i686:
+    path: /asset-mirror/releases/download/0.34_32-bit_20221231-570c24e6/
+    files:
+    - shredos
+    os: shredos
+    version: 0.34_32-bit_20221231
+    arch: i686
+  shredos-x86_64:
+    path: /asset-mirror/releases/download/0.34_20221231-212ce2e7/
+    files:
+    - shredos
+    os: shredos
+    version: 0.3420221231
+    arch: x86_64
+  archlinux-32:
+    path: /asset-mirror/releases/download/2023.03.02-27e99b3a/
+    files:
+    - airootfs.sfs
+    - initramfs-linux.img
+    - vmlinuz-linux
+    os: archlinux
+    version: 2023.03.02
+    arch: i686
+  q4os-4.6-default-squash:
+    path: /debian-squash/releases/download/4.6-2de282e7/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Q4OS
+    version: '4.6'
+    flavor: trinity
+    kernel: q4os-4.6-default-squash
+  q4os-4.6-plasma-squash:
+    path: /debian-squash/releases/download/4.6-f1c7b2cc/
+    files:
+    - filesystem.squashfs
+    os: Q4OS
+    version: '4.6'
+    flavor: plasma
+    kernel: q4os-4.6-default-squash
+  clonezilla-debian-stable-i686:
+    path: /debian-squash/releases/download/3.1.0-22-a2b68d9b/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: clonezilla
+    version: 3.1.0-22
+    flavor: stable
+    kernel: clonezilla-debian-stable-i686
+    arch: i686
+  clonezilla-debian-stable-amd64:
+    path: /debian-squash/releases/download/3.1.0-22-a2d32781/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: clonezilla
+    version: 3.1.0-22
+    flavor: stable
+    kernel: clonezilla-debian-stable-amd64
+    arch: amd64
+  clonezilla-ubuntu-stable-amd64:
+    path: /ubuntu-squash/releases/download/20230426-lunar-3bd665a2/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: clonezilla
+    version: 20230426-lunar
+    flavor: stable
+    kernel: clonezilla-ubuntu-stable-amd64
+    arch: amd64
+  clonezilla-debian-testing-amd64:
+    path: /debian-squash/releases/download/3.1.1-23-8abe0759/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: clonezilla
+    version: 3.1.1-23
+    flavor: testing
+    kernel: clonezilla-debian-testing-amd64
+    arch: amd64
+  clonezilla-debian-testing-i686:
+    path: /debian-squash/releases/download/3.1.1-23-2e6bab21/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: clonezilla
+    version: 3.1.1-23
+    flavor: testing
+    kernel: clonezilla-debian-testing-i686
+    arch: i686
+  clonezilla-ubuntu-testing-amd64:
+    path: /ubuntu-squash/releases/download/20231005-mantic-8b0ec566/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: clonezilla
+    version: 20231005-mantic
+    flavor: testing
+    kernel: clonezilla-ubuntu-testing-amd64
+    arch: amd64
+  garuda-dr460nized-gaming:
+    path: /asset-mirror/releases/download/230501-215d45eb/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: dr460nized-gaming
+    version: 230501
+  garuda-dr460nized:
+    path: /asset-mirror/releases/download/230501-05216c5a/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: dr460nized
+    version: 230501
+  garuda-xfce:
+    path: /asset-mirror/releases/download/230501-4a587bed/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: xfce
+    version: 230501
+  garuda-gnome:
+    path: /asset-mirror/releases/download/230501-a62ea13d/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: gnome
+    version: 230501
+  garuda-lxqt-kwin:
+    path: /asset-mirror/releases/download/230501-06b2aed2/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: lxqt-kwin
+    version: 230501
+  garuda-wayfire:
+    path: /asset-mirror/releases/download/230501-3e2b9c42/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: wayfire
+    version: 230501
+  garuda-qtile:
+    path: /asset-mirror/releases/download/230501-c669549d/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: qtile
+    version: 230501
+  garuda-i3wm:
+    path: /asset-mirror/releases/download/230501-6f3b04b5/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: i3wm
+    version: 230501
+  garuda-sway:
+    path: /asset-mirror/releases/download/230501-9fc58b9f/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: sway
+    version: 230501
+  garuda-mate:
+    path: /asset-mirror/releases/download/230501-af75e41c/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: mate
+    version: 230501
+  garuda-kde-barebones:
+    path: /asset-mirror/releases/download/220329-198784ed/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: kde-barebones
+    version: 220329
+  proxmox-backup-server:
+    path: /asset-mirror/releases/download/3.0-1-df3207b8/
+    files:
+    - initrd
+    - proxmox-backup-server.iso
+    - vmlinuz
+    os: proxmox-backup-server
+    version: 3.0-1
+  proxmox-ve:
+    path: /asset-mirror/releases/download/8.0-2-e021922f/
+    files:
+    - initrd
+    - proxmox.iso
+    - vmlinuz
+    os: proxmox-ve
+    version: 8.0-2
+  proxmox-mailgateway:
+    path: /asset-mirror/releases/download/7.3-1-07068e0a/
+    files:
+    - initrd
+    - proxmox-mailgateway.iso
+    - vmlinuz
+    os: proxmox-mailgateway
+    version: 7.3-1
+  tails-beta:
+    path: /asset-mirror/releases/download/5.0b1-ebdb1fb3/
+    files:
+    - vmlinuz
+    - initrd.img
+    - 9990-misc-helpers.sh
+    os: tails-beta
+    version: 5.0b1
+    arch: amd64
+  ubuntu-netboot-22.04-amd64:
+    path: /ubuntu-squash/releases/download/22.04.3-5c9c6f97/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: 22.04.3
+    codename: jammy
+    flavor: netboot
+    kernel: ubuntu-netboot-22.04-amd64
+    arch: amd64
+  ubuntu-netboot-22.04-arm64:
+    path: /ubuntu-squash/releases/download/22.04.3-5142c69d/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: 22.04.3
+    codename: jammy
+    flavor: netboot
+    kernel: ubuntu-netboot-22.04-arm64
+    arch: arm64
+  ubuntu-22.04-default-squash:
+    path: /ubuntu-squash/releases/download/22.04.3-7854d2c9/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '22.04'
+    flavor: GNOME
+    kernel: ubuntu-22.04-default-squash
+  ubuntu-22.04-XFCE-squash:
+    path: /ubuntu-squash/releases/download/22.04.3-ee692bdc/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '22.04'
+    flavor: XFCE
+    kernel: ubuntu-22.04-XFCE-squash
+  ubuntu-22.04-MATE-squash:
+    path: /ubuntu-squash/releases/download/22.04.3-52cf5cdc/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '22.04'
+    flavor: MATE
+    kernel: ubuntu-22.04-MATE-squash
+  ubuntu-22.04-Budgie-squash:
+    path: /ubuntu-squash/releases/download/22.04.3-69c106ea/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '22.04'
+    flavor: Budgie
+    kernel: ubuntu-22.04-Budgie-squash
+  ubuntu-22.04-KDE-squash:
+    path: /ubuntu-squash/releases/download/22.04.3-b69c64d8/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '22.04'
+    flavor: KDE
+    kernel: ubuntu-22.04-KDE-squash
+  ubuntu-22.04-kylin-squash:
+    path: /ubuntu-squash/releases/download/22.04.3-e6b9f5c6/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '22.04'
+    flavor: kylin
+    kernel: ubuntu-22.04-kylin-squash
+  voyager-jammy-squash:
+    path: /ubuntu-squash/releases/download/jammy-4cd7f2cf/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Voyager
+    version: jammy
+    flavor: jammy
+    kernel: voyager-jammy-squash
+  talos-amd64:
+    path: /asset-mirror/releases/download/1.0.4-9616af8f/
+    files:
+    - vmlinuz-amd64
+    - initramfs-amd64.xz
+    os: talos
+    version: 1.0.4
+  pop-22.04-default-squash:
+    path: /ubuntu-squash/releases/download/21-6c5e10cf/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: pop
+    version: '22.04'
+    flavor: intel-amd
+    kernel: pop-22.04-default-squash
+  vmware-photon-x86_64:
+    path: /asset-mirror/releases/download/4.0-b9a135b9/
+    files:
+    - initrd.img
+    - vmlinuz
+    os: vmware-photon
+    version: '4.0'
+    arch: x86_64
+  vmware-photon-aarch64:
+    path: /asset-mirror/releases/download/4.0-b5c64b54/
+    files:
+    - initrd.img
+    - vmlinuz
+    os: vmware-photon
+    version: '4.0'
+    arch: aarch64
+  harvester:
+    path: /asset-mirror/releases/download/v1.2.1-5874669e/
+    files:
+    - harvester-vmlinuz-amd64
+    - harvester-initrd-amd64
+    - harvester-rootfs-amd64.squashfs
+    - harvester-amd64.sha512
+    - version.yaml
+    os: harvester
+    version: v1.2.1
+  linux-lite-6-squash:
+    path: /ubuntu-squash/releases/download/6.4-2550834c/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: lite
+    version: 6.4
+    kernel: linux-lite-6-squash
+  mint-21-cinnamon-squash:
+    path: /ubuntu-squash/releases/download/21.2-7c6c5a49/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: mint
+    version: '21.2'
+    flavor: Cinnamon
+    kernel: mint-21-cinnamon-squash
+  mint-21-mate-squash:
+    path: /ubuntu-squash/releases/download/21.2-f9ca1af5/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: mint
+    version: '21.2'
+    flavor: mate
+    kernel: mint-21-mate-squash
+  mint-21-xfce-squash:
+    path: /ubuntu-squash/releases/download/21.2-48afaac3/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: mint
+    version: '21.2'
+    flavor: xfce
+    kernel: mint-21-xfce-squash
+  oracle-9-x86_64:
+    path: /asset-mirror/releases/download/U2-6c57d11f/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: oracle
+    version: '9'
+    arch: x86_64
+  oracle-9-aarch64:
+    path: /asset-mirror/releases/download/U2-d9adfa9a/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: oracle
+    version: '9'
+    arch: aarch64
+  parrot-home:
+    path: /debian-squash/releases/download/5.3-12d8fd0c/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: parrot
+    version: '5.3'
+    flavor: home
+  parrot-security:
+    path: /debian-squash/releases/download/5.1.1-47327415/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: parrot
+    version: 5.1.1
+    flavor: security
+  xcp-ng:
+    path: /asset-mirror/releases/download/8.2-a1f72de1/
+    files:
+    - xen.gz
+    - vmlinuz
+    - install.img
+    os: xcp-ng
+    version: '8.2'
+  garuda-cinnamon:
+    path: /asset-mirror/releases/download/230501-3ef04424/
+    files:
+    - amd_ucode.img
+    - desktopfs.sfs
+    - intel_ucode.img
+    - livefs.sfs
+    - initramfs.img
+    - mhwdfs.sfs
+    - rootfs.sfs
+    - vmlinuz
+    os: garuda
+    flavor: cinnamon
+    version: 230501
+  ubuntu-22.04-studio-squash:
+    path: /ubuntu-squash/releases/download/22.04.1-f22bcaf8/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '22.04'
+    flavor: Studio
+    kernel: ubuntu-22.04-studio-squash
+  fedora-37-gnome:
+    path: /fedora-assets/releases/download/1.7-f09aef06/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: GNOME
+  fedora-37-Cinnamon:
+    path: /fedora-assets/releases/download/1.7-2bd85835/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: Cinnamon
+  fedora-37-KDE:
+    path: /fedora-assets/releases/download/1.7-34fb784f/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: KDE
+  fedora-37-LXDE:
+    path: /fedora-assets/releases/download/1.7-21b170b8/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: LXDE
+  fedora-37-LXQt:
+    path: /fedora-assets/releases/download/1.7-4f96a1b8/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: LXQt
+  fedora-37-i3:
+    path: /fedora-assets/releases/download/1.7-f031f3b7/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: i3
+  fedora-37-SoaS:
+    path: /fedora-assets/releases/download/1.7-21170b41/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: SoaS
+  fedora-37-MATE_Compiz:
+    path: /fedora-assets/releases/download/1.7-940b968b/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: MATE_Compiz
+  fedora-37-Xfce:
+    path: /fedora-assets/releases/download/1.7-ef14186b/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 37
+    flavor: Xfce
+  q4os-4.11-default-squash:
+    path: /debian-squash/releases/download/4.11-41829bdb/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: Q4OS
+    version: '4.11'
+    flavor: trinity
+    kernel: q4os-4.11-default-squash
+  q4os-4.11-plasma-squash:
+    path: /debian-squash/releases/download/4.11-62cc7148/
+    files:
+    - filesystem.squashfs
+    os: Q4OS
+    version: '4.11'
+    flavor: plasma
+    kernel: q4os-4.11-default-squash
+  elementaryos-7-default-squash:
+    path: /ubuntu-squash/releases/download/7-b59ea51c/
+    files:
+    - initrd
+    - vmlinuz
+    - filesystem.squashfs
+    os: elementary-os
+    version: '7'
+    kernel: elementaryos-7-default-squash
+  ubuntu-18.04-LXQT-squash:
+    path: /ubuntu-squash/releases/download/18.04.5-35579364/
+    files:
+    - filesystem.squashfs
+    os: ubuntu
+    version: '18.04'
+    flavor: LXQT
+    kernel: ubuntu-18.04-live-kernel
+  ubuntu-20.04-LXQT-squash:
+    path: /ubuntu-squash/releases/download/20.04.5-b8614166/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '20.04'
+    flavor: LXQT
+    kernel: ubuntu-20.04-LXQT-squash
+  fedora-38-gnome:
+    path: /fedora-assets/releases/download/1.6-1490a6a4/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: GNOME
+  fedora-38-Cinnamon:
+    path: /fedora-assets/releases/download/1.6-74bd0862/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: Cinnamon
+  fedora-38-LXDE:
+    path: /fedora-assets/releases/download/1.6-ed419272/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: LXDE
+  fedora-38-KDE:
+    path: /fedora-assets/releases/download/1.6-900bb188/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: KDE
+  fedora-38-LXQt:
+    path: /fedora-assets/releases/download/1.6-e33a6ad4/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: LXQt
+  fedora-38-MATE_Compiz:
+    path: /fedora-assets/releases/download/1.6-61818d7f/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: MATE_Compiz
+  fedora-38-SoaS:
+    path: /fedora-assets/releases/download/1.6-97014950/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: SoaS
+  fedora-38-i3:
+    path: /fedora-assets/releases/download/1.6-2af51286/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: i3
+  ubuntu-netboot-23.04-arm64:
+    path: /ubuntu-squash/releases/download/23.04-88043c0b/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    codename: kinetic
+    flavor: netboot
+    kernel: ubuntu-netboot-23.04-arm64
+    arch: arm64
+  ubuntu-netboot-23.04-amd64:
+    path: /ubuntu-squash/releases/download/23.04-6806f3c6/
+    files:
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    codename: lunar
+    flavor: netboot
+    kernel: ubuntu-netboot-23.04-amd64
+    arch: amd64
+  fedora-38-Xfce:
+    path: /fedora-assets/releases/download/1.6-6879563d/
+    files:
+    - vmlinuz
+    - initrd
+    - squashfs.img
+    os: fedora
+    version: 38
+    flavor: Xfce
+  ubuntu-23.04-KDE-squash:
+    path: /ubuntu-squash/releases/download/23.04-a3cf865f/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    flavor: KDE
+    kernel: ubuntu-23.04-KDE-squash
+  ubuntu-23.04-LXQT-squash:
+    path: /ubuntu-squash/releases/download/23.04-5eee26d9/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    flavor: LXQT
+    kernel: ubuntu-23.04-LXQT-squash
+  ubuntu-23.04-Budgie-squash:
+    path: /ubuntu-squash/releases/download/23.04-d3db983e/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    flavor: Budgie
+    kernel: ubuntu-23.04-Budgie-squash
+  ubuntu-23.04-MATE-squash:
+    path: /ubuntu-squash/releases/download/23.04-20dca9a3/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    flavor: MATE
+    kernel: ubuntu-23.04-MATE-squash
+  ubuntu-23.04-kylin-squash:
+    path: /ubuntu-squash/releases/download/23.04-fac56a95/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    flavor: kylin
+    kernel: ubuntu-23.04-kylin-squash
+  debian-12-live-kernel:
+    path: /debian-core-12/releases/download/12.2.0-e814dabe/
+    files:
+    - initrd
+    - vmlinuz
+    os: debian
+    version: '12'
+  debian-12-default-squash:
+    path: /debian-squash/releases/download/12.2.0-af031ed0/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: core
+    kernel: debian-12-live-kernel
+  debian-12-gnome-squash:
+    path: /debian-squash/releases/download/12.2.0-902866c5/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: gnome
+    kernel: debian-12-live-kernel
+  debian-12-cinnamon-squash:
+    path: /debian-squash/releases/download/12.2.0-13a18385/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: cinnamon
+    kernel: debian-12-live-kernel
+  debian-12-lxqt-squash:
+    path: /debian-squash/releases/download/12.2.0-af6e8eaa/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: lxqt
+    kernel: debian-12-live-kernel
+  debian-12-mate-squash:
+    path: /debian-squash/releases/download/12.2.0-a011040b/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: mate
+    kernel: debian-12-live-kernel
+  debian-12-lxde-squash:
+    path: /debian-squash/releases/download/12.2.0-dbf77ace/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: lxde
+    kernel: debian-12-live-kernel
+  debian-12-xfce-squash:
+    path: /debian-squash/releases/download/12.2.0-43ea519a/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: xfce
+    kernel: debian-12-live-kernel
+  debian-12-kde-squash:
+    path: /debian-squash/releases/download/12.2.0-31babae3/
+    files:
+    - filesystem.squashfs
+    os: debian
+    version: '12'
+    flavor: kde
+    kernel: debian-12-live-kernel
+  ubuntu-23.04-default-squash:
+    path: /ubuntu-squash/releases/download/23.04-ad6aa82a/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.04'
+    flavor: GNOME
+    kernel: ubuntu-23.04-default-squash
+  ubuntu-netboot-23.10-arm64:
+    path: /ubuntu-squash/releases/download/23.10-729b6a9e/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    codename: mantic
+    flavor: netboot
+    kernel: ubuntu-netboot-23.10-arm64
+    arch: arm64
+  ubuntu-netboot-23.10-amd64:
+    path: /ubuntu-squash/releases/download/23.10-5b615fc9/
+    files:
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    codename: mantic
+    flavor: netboot
+    kernel: ubuntu-netboot-23.10-amd64
+    arch: amd64
+  ubuntu-23.10-KDE-squash:
+    path: /ubuntu-squash/releases/download/23.10-1ddd332a/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    flavor: KDE
+    kernel: ubuntu-23.10-KDE-squash
+  ubuntu-23.10-LXQT-squash:
+    path: /ubuntu-squash/releases/download/23.10-1c838f89/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    flavor: LXQT
+    kernel: ubuntu-23.10-LXQT-squash
+  ubuntu-23.10-kylin-squash:
+    path: /ubuntu-squash/releases/download/23.10-2a267c2e/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    flavor: kylin
+    kernel: ubuntu-23.10-kylin-squash
+  ubuntu-23.10-MATE-squash:
+    path: /ubuntu-squash/releases/download/23.10-b1358599/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    flavor: MATE
+    kernel: ubuntu-23.10-MATE-squash
+  ubuntu-23.10-Budgie-squash:
+    path: /ubuntu-squash/releases/download/23.10.1-cd06b610/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    flavor: Budgie
+    kernel: ubuntu-23.10-Budgie-squash
+  ubuntu-23.10-default-squash:
+    path: /ubuntu-squash/releases/download/23.10.1-9f1a35b0/
+    files:
+    - filesystem.squashfs
+    - initrd
+    - vmlinuz
+    os: ubuntu
+    version: '23.10'
+    flavor: GNOME
+    kernel: ubuntu-23.10-default-squash

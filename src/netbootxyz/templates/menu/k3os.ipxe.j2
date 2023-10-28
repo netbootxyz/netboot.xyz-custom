@@ -1,0 +1,81 @@
+#!ipxe
+
+# k3OS by Rancher
+# https://k3os.io/
+# https://github.com/rancher/k3os#configuration-reference
+
+goto ${menu} ||
+
+:k3os
+set os {{ releases.k3os.name }}
+set os_arch ${arch}
+iseq ${os_arch} x86_64 && set os_arch amd64 ||
+set k3os_mirror {{ releases.k3os.mirror }}
+isset ${k3os_version} || set k3os_version latest
+isset ${k3os_install_device} || set k3os_install_device /dev/sda
+menu ${os} by Rancher
+menu ${os} install
+item --gap k3OS:
+item k3os_boot ${space} Begin install ${os} ${k3os_version}
+item --gap Parameters:
+item k3os_version ${space} ${os} version: ${k3os_version}
+item k3os_install_device ${space} Set install device: ${k3os_install_device}
+item k3os_config_url ${space} Set config.yaml URL: ${k3os_config_url}
+item k3os_mirror ${space} Set mirror URL: ${k3os_mirror}
+choose --default ${menu} menu || goto k3os_exit
+echo ${cls}
+goto ${menu} ||
+goto k3os_exit
+
+:k3os_version 
+menu ${os} version
+item latest ${space} latest 
+item custom ${space} Set custom version
+choose --default ${version} version || goto k3os_exit
+echo ${cls}
+goto k3os_version_${version} ||
+goto k3os_exit
+
+:k3os_version_latest
+set k3os_version latest
+set k3os_base_url ${k3os_mirror}/latest/download
+goto k3os
+
+:k3os_version_custom
+clear k3os_version
+echo -n Please set k3OS version manually (in format vX.Y.Z):  && read k3os_version
+set k3os_base_url ${k3os_mirror}/download/${k3os_version}
+clear menu
+goto k3os
+
+:k3os_install_device
+echo -n Please set desired install device:  && read k3os_install_device
+clear menu
+goto k3os
+
+:k3os_mirror
+echo -n Set mirror URL:  && read k3os_mirror
+clear menu
+goto k3os_version || 
+goto k3os_exit
+
+:k3os_config_url
+echo -n Set config.yaml URL:  && read k3os_config_url
+clear menu
+goto k3os
+
+:k3os_boot
+isset ${k3os_base_url} || set k3os_base_url ${k3os_mirror}/latest/download
+set install_params k3os.install.silent=true k3os.mode=install k3os.install.config_url=${k3os_config_url} k3os.install.device=${k3os_install_device}
+set boot_params printk.devkmsg=on k3os.install.iso_url=${k3os_base_url}/k3os-${os_arch}.iso console=ttyS0 console=tty1
+imgfree
+kernel ${k3os_base_url}/k3os-vmlinuz-${os_arch} ${install_params} ${boot_params} {{ kernel_params }}
+initrd ${k3os_base_url}/k3os-initrd-${os_arch}
+echo
+echo MD5sums:
+md5sum k3os-vmlinuz-${os_arch} k3os-initrd-${os_arch}
+boot
+
+:k3os_exit
+clear menu
+exit 0
