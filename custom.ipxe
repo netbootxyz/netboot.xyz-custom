@@ -1,5 +1,18 @@
 #!ipxe
 
+# Error Handling Section
+:boot_fail
+echo Boot failed, returning to menu...
+sleep 3
+goto main_menu
+
+# Network Configuration Section
+:net_config
+echo Configuring Network...
+# ... network configuration commands ...
+goto main_menu
+
+# Main menu
 :main_menu
 menu Custom netboot.xyz Menu
 item --gap --                   System Recovery Options:
@@ -35,45 +48,45 @@ goto ${option}
 kernel http://path.to/findroot/vmlinuz
 initrd http://path.to/findroot/initrd.img
 imgargs vmlinuz root=/dev/xxxx rw
-boot || goto main_menu
+boot || goto boot_fail
 
 :systemrescue
 kernel https://boot.netboot.xyz/ipxe/systemrescuecd/vmlinuz
 initrd https://boot.netboot.xyz/ipxe/systemrescuecd/initrd.img
 imgargs vmlinuz setkmap=us
-boot || goto main_menu
+boot || goto boot_fail
 
 :kodachi
 kernel https://boot.netboot.xyz/ipxe/kodachi/vmlinuz
 initrd https://boot.netboot.xyz/ipxe/kodachi/initrd.img
 imgargs vmlinuz boot=live noconfig=sudo username=kodachi hostname=kodachi
-boot || goto main_menu
+boot || goto boot_fail
 
 :garuda
 kernel https://boot.netboot.xyz/ipxe/garuda/vmlinuz
 initrd https://boot.netboot.xyz/ipxe/garuda/initrd.img
 imgargs vmlinuz boot=live noconfig=sudo username=garuda hostname=garuda
-boot || goto main_menu
+boot || goto boot_fail
 
 :gparted
 echo Booting into GParted...
 kernel http://path.to/gparted
-boot || goto main_menu
+boot || goto boot_fail
 
 :clonezilla
 echo Booting into Clonezilla...
 kernel http://path.to/clonezilla
-boot || goto main_menu
+boot || goto boot_fail
 
 :testdisk
 echo Booting into TestDisk...
 kernel http://path.to/testdisk
-boot || goto main_menu
+boot || goto boot_fail
 
 :photorec
 echo Booting into PhotoRec...
 kernel http://path.to/photorec
-boot || goto main_menu
+boot || goto boot_fail
 
 :net_config
 echo Configuring Network...
@@ -83,55 +96,55 @@ goto main_menu
 :memtest
 echo Booting into Memtest86+...
 kernel http://path.to/memtest
-boot || goto main_menu
+boot || goto boot_fail
 
 :systemrescue2
 echo Booting into System Rescue...
 dhcp
 chain --autofree https://boot.netboot.xyz
-goto main_menu
+goto boot_fail
 
 :option_one
 kernel https://boot.netboot.xyz/ipxe/systemrescuecd/vmlinuz
 initrd https://boot.netboot.xyz/ipxe/systemrescuecd/initrd.img
 imgargs vmlinuz setkmap=us
-boot || goto main_menu
+boot || goto boot_fail
 
 :option_two
 kernel https://boot.netboot.xyz/ipxe/kodachi/vmlinuz
 initrd https://boot.netboot.xyz/ipxe/kodachi/initrd.img
 imgargs vmlinuz boot=live noconfig=sudo username=kodachi hostname=kodachi
-boot || goto main_menu
+boot || goto boot_fail
 
 :option_three
 kernel https://boot.netboot.xyz/ipxe/garuda/vmlinuz
 initrd https://boot.netboot.xyz/ipxe/garuda/initrd.img
 imgargs vmlinuz boot=live noconfig=sudo username=garuda hostname=garuda
-boot || goto main_menu
+boot || goto boot_fail
 
 :option_four
 kernel http://path.to/memtest86/memtest86
-boot || goto main_menu
+boot || goto boot_fail
 
 :option_five
 kernel http://path.to/win10/boot.wim
-boot || goto main_menu
+boot || goto boot_fail
 
 :option_six
 kernel http://path.to/ubuntu/vmlinuz
 initrd http://path.to/ubuntu/initrd.img
 imgargs vmlinuz quiet splash
-boot || goto main_menu
+boot || goto boot_fail
 
 :option_seven
 echo Loading netboot.xyz kernel in Legacy Mode...
-chain --autofree http://boot.netboot.xyz/ipxe/netboot.xyz.lkrn || goto main_menu
+chain --autofree http://boot.netboot.xyz/ipxe/netboot.xyz.lkrn || goto boot_fail
 
 :option_eight
 echo Loading netboot.xyz kernel in EFI Mode...
-chain --autofree http://boot.netboot.xyz/ipxe/netboot.xyz.efi || goto main_menu
-
+chain --autofree http://boot.netboot.xyz/ipxe/netboot.xyz.efi || goto boot_fail
 
 :exit
 chain http://boot.netboot.xyz
 exit
+
