@@ -44,9 +44,10 @@ item option_eight              Back to Main Menu
 choose --default findroot --timeout 5000 option || goto exit
 goto ${option}
 
+# Boot Sections for each OS/Utility
 :findroot
-kernel http://path.to/findroot/vmlinuz
-initrd http://path.to/findroot/initrd.img
+kernel http://your.server.url/path/to/findroot/vmlinuz
+initrd http://your.server.url/path/to/findroot/initrd.img
 imgargs vmlinuz root=/dev/xxxx rw
 boot || goto boot_fail
 
@@ -70,22 +71,26 @@ boot || goto boot_fail
 
 :gparted
 echo Booting into GParted...
-kernel http://path.to/gparted
+kernel http://boot.netboot.xyz/ipxe/gparted/vmlinuz
+initrd http://boot.netboot.xyz/ipxe/gparted/initrd.img
 boot || goto boot_fail
 
 :clonezilla
 echo Booting into Clonezilla...
-kernel http://path.to/clonezilla
+kernel http://boot.netboot.xyz/ipxe/clonezilla/vmlinuz
+initrd http://boot.netboot.xyz/ipxe/clonezilla/initrd.img
 boot || goto boot_fail
 
 :testdisk
 echo Booting into TestDisk...
-kernel http://path.to/testdisk
+kernel http://boot.netboot.xyz/ipxe/testdisk/vmlinuz
+initrd http://boot.netboot.xyz/ipxe/testdisk/initrd.img
 boot || goto boot_fail
 
 :photorec
 echo Booting into PhotoRec...
-kernel http://path.to/photorec
+kernel http://boot.netboot.xyz/ipxe/photorec/vmlinuz
+initrd http://boot.netboot.xyz/ipxe/photorec/initrd.img
 boot || goto boot_fail
 
 :net_config
@@ -95,7 +100,8 @@ goto main_menu
 
 :memtest
 echo Booting into Memtest86+...
-kernel http://path.to/memtest
+kernel http://boot.netboot.xyz/ipxe/memdisk
+initrd http://boot.netboot.xyz/ipxe/memtest86
 boot || goto boot_fail
 
 :systemrescue2
@@ -123,16 +129,17 @@ imgargs vmlinuz boot=live noconfig=sudo username=garuda hostname=garuda
 boot || goto boot_fail
 
 :option_four
-kernel http://path.to/memtest86/memtest86
+kernel http://boot.netboot.xyz/ipxe/memdisk
+initrd http://boot.netboot.xyz/ipxe/memtest86
 boot || goto boot_fail
 
 :option_five
-kernel http://path.to/win10/boot.wim
+kernel http://boot.netboot.xyz/ipxe/win10/boot.wim
 boot || goto boot_fail
 
 :option_six
-kernel http://path.to/ubuntu/vmlinuz
-initrd http://path.to/ubuntu/initrd.img
+kernel http://boot.netboot.xyz/ipxe/ubuntu/vmlinuz
+initrd http://boot.netboot.xyz/ipxe/ubuntu/initrd.img
 imgargs vmlinuz quiet splash
 boot || goto boot_fail
 
@@ -147,4 +154,3 @@ chain --autofree http://boot.netboot.xyz/ipxe/netboot.xyz.efi || goto boot_fail
 :exit
 chain http://boot.netboot.xyz
 exit
-
