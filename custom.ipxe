@@ -1,4 +1,48 @@
 #!ipxe
+:custom
+clear custom_choice
+menu Custom Recovery Menu
+item --gap --                  System Recovery Options:
+item findroot                 Load FindRoot...
+item systemrescue             Load SystemRescue...
+item kodachi                  Load Kodachi...
+item garuda                   Load Garuda...
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
+goto custom_exit
+
+:findroot
+kernel http://path.to/findroot/vmlinuz
+initrd http://path.to/findroot/initrd.img
+imgargs vmlinuz root=/dev/xxxx rw
+boot || goto custom_exit
+
+:systemrescue
+kernel https://boot.netboot.xyz/ipxe/systemrescuecd/vmlinuz
+initrd https://boot.netboot.xyz/ipxe/systemrescuecd/initrd.img
+imgargs vmlinuz setkmap=us
+boot || goto custom_exit
+
+:kodachi
+kernel https://boot.netboot.xyz/ipxe/kodachi/vmlinuz
+initrd https://boot.netboot.xyz/ipxe/kodachi/initrd.img
+imgargs vmlinuz boot=live noconfig=sudo username=kodachi hostname=kodachi
+boot || goto custom_exit
+
+:garuda
+kernel https://boot.netboot.xyz/ipxe/garuda/vmlinuz
+initrd https://boot.netboot.xyz/ipxe/garuda/initrd.img
+imgargs vmlinuz boot=live noconfig=sudo username=garuda hostname=garuda
+boot || goto custom_exit
+
+:custom_exit
+exit
+
+
+
+# --- // 2 // -------------------------------------------------||
+#!ipxe
 ###
 ### netboot.xyz-custom menu 
 ###
@@ -65,4 +109,72 @@ chain https://raw.githubusercontent.com/${4ndr0666}/netboot.xyz-custom/master/cu
 
 :custom_exit
 chain utils.ipxe
+exit
+
+
+
+
+# --- // 3 // ------------------------------------------------||
+#!ipxe
+
+:custom
+clear custom_choice
+menu System Recovery Tools Menu
+item --gap -- ------------------------ Sub Menu 1 ------------------------
+item option_one     Load SystemRescue Kernel and Initrd
+item option_two     Load Kodachi Linux
+item option_three   Load Garuda Linux
+item --gap -- ------------------------ Sub Menu 2 ------------------------
+item option_four    Load MemTest86
+item option_five    Load Windows 10 (PXE)
+item option_six     Load Ubuntu 20.04 (PXE)
+item --gap -- ------------------------ Sub Menu 3 ------------------------
+item option_seven   Load Another Custom Sub Menu
+item option_eight   Back to Main Menu
+choose custom_choice || goto custom_exit
+echo ${cls}
+goto ${custom_choice}
+goto custom_exit
+
+:option_one
+kernel http://your.server.url/path/to/systemrescue/vmlinuz
+initrd http://your.server.url/path/to/systemrescue/initramfs.igz
+imgargs vmlinuz archisobasedir=systemrescue archiso_http_srv=http://your.server.url/
+boot || goto custom_exit
+
+:option_two
+kernel http://your.server.url/path/to/kodachi/vmlinuz
+initrd http://your.server.url/path/to/kodachi/initramfs.igz
+imgargs vmlinuz quiet splash
+boot || goto custom_exit
+
+:option_three
+kernel http://your.server.url/path/to/garuda/vmlinuz-linux-zen
+initrd http://your.server.url/path/to/garuda/initramfs-linux-zen.img
+imgargs vmlinuz-linux-zen quiet splash
+boot || goto custom_exit
+
+:option_four
+kernel http://your.server.url/path/to/memtest86/memtest86
+boot || goto custom_exit
+
+:option_five
+kernel http://your.server.url/path/to/win10/boot.wim
+boot || goto custom_exit
+
+:option_six
+kernel http://your.server.url/path/to/ubuntu/vmlinuz
+initrd http://your.server.url/path/to/ubuntu/initrd.img
+imgargs vmlinuz quiet splash
+boot || goto custom_exit
+
+:option_seven
+echo Chains into another menu...
+chain http://your.server.url/path/to/another/custom/menu.ipxe || goto custom
+
+:option_eight
+chain http://boot.netboot.xyz || goto custom_exit
+
+:custom_exit
+chain http://boot.netboot.xyz
 exit
