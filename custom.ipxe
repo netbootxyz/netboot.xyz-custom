@@ -124,11 +124,13 @@ imgargs vmlinuz quiet splash
 boot || goto main_menu
 
 :option_seven
-echo Chains into another menu...
-chain http://path.to/another/custom/menu.ipxe || goto main_menu
+echo Loading netboot.xyz kernel in Legacy Mode...
+chain --autofree http://boot.netboot.xyz/ipxe/netboot.xyz.lkrn || goto main_menu
 
 :option_eight
-chain http://boot.netboot.xyz || goto main_menu
+echo Loading netboot.xyz kernel in EFI Mode...
+chain --autofree http://boot.netboot.xyz/ipxe/netboot.xyz.efi || goto main_menu
+
 
 :exit
 chain http://boot.netboot.xyz
