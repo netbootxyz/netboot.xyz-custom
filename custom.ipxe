@@ -1,12 +1,24 @@
 #!ipxe
-###
-### netboot.xyz-custom menu
-###
+
+set base-url http://192.168.0.45:8080/hirenboot
 
 :start
-echo Hello world!
-sleep 10
-goto custom_exit
+menu Please choose an option:
+item hirens Hirens Boot CD PE x64
+item exit Exit
+choose --default hirens --timeout 5000 selected
+goto ${selected}
 
-:custom_exit
-exit 0
+:hirens
+echo Booting Hirens Boot CD PE x64...
+imgfree
+kernel https://boot.netboot.xyz/wimboot
+initrd -n bootmgr ${base-url}/BOOTMGR       bootmgr ||
+initrd -n bootmgr.efi ${base-url}/bootmgr.efi   bootmgr.efi ||      
+initrd -n bcd         ${base-url}/boot/bcd  bcd||
+initrd -n boot.sdi    ${base-url}/boot/boot.sdi  boot.sdi||
+initrd -n boot.wim    ${base-url}/sources/boot.wim boot.wim
+boot
+
+:exit
+exit
