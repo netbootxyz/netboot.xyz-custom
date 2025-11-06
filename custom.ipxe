@@ -25,7 +25,7 @@ boot
 echo Booting FCOS Control Config...
 set STREAM stable
 set VERSION 42.20250929.3.0
-set INSTALLDEV /dev/sda
+set INSTALLDEV /dev/disk/by-id/5002538E403F772B
 set CONFIGURL http://lab.hrthn.xyz:3001/harthan/fcos-config/raw/branch/main/manual/ignition/control.ign
 set BASEURL https://builds.coreos.fedoraproject.org/prod/streams/${STREAM}/builds/${VERSION}/x86_64
 kernel ${BASEURL}/fedora-coreos-${VERSION}-live-kernel.x86_64 initrd=main coreos.live.rootfs_url=${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img coreos.inst.install_dev=${INSTALLDEV} coreos.inst.ignition_url=${CONFIGURL}
