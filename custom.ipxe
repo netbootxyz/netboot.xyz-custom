@@ -17,7 +17,7 @@ set VERSION 42.20250929.3.0
 set INSTALLDEV /dev/sda
 set CONFIGURL http://lab.hrthn.xyz:3001/harthan/fcos-config/raw/branch/main/manual/ignition/worker.ign
 set BASEURL https://builds.coreos.fedoraproject.org/prod/streams/${STREAM}/builds/${VERSION}/x86_64
-kernel ${BASEURL}/fedora-coreos-${VERSION}-live-kernel.x86_64 initrd=main coreos.live.rootfs_url=${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img coreos.inst.install_dev=${INSTALLDEV} coreos.inst.ignition_url=${CONFIGURL}
+kernel ${BASEURL}/fedora-coreos-${VERSION}-live-kernel.x86_64 initrd=main coreos.live.rootfs_url=${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img coreos.inst.install_dev=${INSTALLDEV} coreos.inst.ignition_url=${CONFIGURL} coreos.inst.insecure_ignition
 initrd --name main ${BASEURL}/fedora-coreos-${VERSION}-live-initramfs.x86_64.img
 boot
 
@@ -28,7 +28,7 @@ set VERSION 42.20250929.3.0
 set INSTALLDEV /dev/nvme0n1
 set CONFIGURL http://lab.hrthn.xyz:3001/harthan/fcos-config/raw/branch/main/manual/ignition/control.ign
 set BASEURL https://builds.coreos.fedoraproject.org/prod/streams/${STREAM}/builds/${VERSION}/x86_64
-kernel ${BASEURL}/fedora-coreos-${VERSION}-live-kernel.x86_64 initrd=main coreos.live.rootfs_url=${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img coreos.inst.install_dev=${INSTALLDEV} coreos.inst.ignition_url=${CONFIGURL}
+kernel ${BASEURL}/fedora-coreos-${VERSION}-live-kernel.x86_64 initrd=main coreos.live.rootfs_url=${BASEURL}/fedora-coreos-${VERSION}-live-rootfs.x86_64.img coreos.inst.install_dev=${INSTALLDEV} coreos.inst.ignition_url=${CONFIGURL} coreos.inst.insecure_ignition
 initrd --name main ${BASEURL}/fedora-coreos-${VERSION}-live-initramfs.x86_64.img
 boot
 
